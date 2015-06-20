@@ -14,7 +14,7 @@ config.port = process.env.PORT
 config.port ?= default_port
 
 # database
-default_db_url = 'mongodb://development:ThisIsAShittyPassword@ds047742.mongolab.com:47742/tunemachine'
+default_db_url = 'mongodb://dev:devpassword@ds047682.mongolab.com:47682/tunemachine-dev'
 
 config.db = {}
 config.db.url = process.env.DB_URL
