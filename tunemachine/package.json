@@ -1,0 +1,11 @@
+{
+  "name": "tunemachine",
+  "version": "1.0.0",
+  "description": "Version control for your spotify tunes.",
+  "main": "server.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CMU A16Z 2015 Hackathon Team",
+  "license": "MIT"
+}
