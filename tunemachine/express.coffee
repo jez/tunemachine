@@ -18,6 +18,7 @@ MongoStore = MongoStore session
 web.init = (config, next) ->
   delete web.init
   web.express = express()
+  web.express.use(express.static('public'))
 
   # session initialisation
   mongoStore = new MongoStore

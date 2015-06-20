@@ -9,4 +9,6 @@ app = {}
 app.config = require './config'
 app.web = require './express'
 
-app.web.init app.config, () -> console.log "Server listening on port #{ app.config.port }"
+app.web.init app.config, () ->
+  app.web.express.listen app.config.port
+  console.log "Server listening on port #{ app.config.port }"
