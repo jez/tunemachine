@@ -7,5 +7,6 @@ console.log 'Initializing TuneMachine server instance.'
 
 app = {}
 app.config = require './config'
+app.web = require './express'
 
-console.log "Server successfully initialized and listening on port #{ app.config.port }"
+app.web.init app.config, () -> console.log "Server listening on port #{ app.config.port }"
