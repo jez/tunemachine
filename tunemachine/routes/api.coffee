@@ -4,11 +4,10 @@
 # @since 20 Jun 2015
 
 requireLoggedIn = (req, res, next) ->
-  if req.session.access_token?
+  if req.session.access_token? and Date.now() < req.session.expiration
     next()
   else
-    res.status 403
-    res.end 'Forbidden: Not logged in.'
+    res.redirect '/auth/login'
 
 module.exports = (app, models, spotify) ->
 

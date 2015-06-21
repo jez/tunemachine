@@ -37,6 +37,7 @@ module.exports = (app, models, spotify, config) ->
             return res.end 'Error'
           req.session.user_id = values.id
           req.session.access_token = body.access_token
+          req.session.expiration = Date.now() + (1000 * body.expires_in)
 
           models.User.findOne
               UserID: req.session.user_id
