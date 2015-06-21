@@ -34,8 +34,10 @@ module.exports = (app, models, spotify) ->
 
   # POST /api/playlist/:playlistId
   app.post '/api/playlist/:playlistId', (req, res) ->
+    res.json []
     res.end "Unimplemented. Playlist: #{req.params.playlistId}"
 
   # PUT /api/playlist/:playlistId/:snapId
   app.put '/api/playlist/:playlistId/:snapId', (req, res) ->
-    res.end "Unimplemented. Playlist: #{req.params.playlistId} Snap: #{req.params.snapId}"
+    res.status 200
+    res.end
