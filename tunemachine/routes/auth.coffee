@@ -15,6 +15,7 @@ module.exports = (app, config) ->
         response_type: 'code'
         client_id:     config.auth.clientId
         redirect_uri:  config.domain + 'auth/oauth2callback'
+        scope:        'playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
 
   # GET /auth/oauth2callback
   app.get '/auth/oauth2callback', (req, res) ->
