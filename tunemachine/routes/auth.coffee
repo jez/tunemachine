@@ -8,23 +8,23 @@ request = require 'request'
 
 module.exports = (app, config) ->
 
-  # GET /login
-  app.get '/login', (req, res) ->
+  # GET /auth/login/
+  app.get '/auth/login', (req, res) ->
     res.redirect 'https://accounts.spotify.com/authorize?' +
       querystring.stringify
         response_type: 'code'
         client_id:     config.auth.clientId
-        redirect_uri:  'http://localhost:8080/finishlogin'
+        redirect_uri:  config.domain + 'auth/oauth2callback'
 
-  # GET /finishlogin
-  app.get '/finishlogin', (req, res) ->
+  # GET /auth/oauth2callback
+  app.get '/auth/oauth2callback', (req, res) ->
     if req.query.error? then res.end 'Error'
     else
       authOptions =
         url: 'https://accounts.spotify.com/api/token'
         form:
           code: req.query.code
-          redirect_uri: 'http://localhost:8080/finishlogin'
+          redirect_uri: config.domain + 'auth/oauth2callback'
           grant_type: 'authorization_code'
           client_id: config.auth.clientId
           client_secret: config.auth.secret
@@ -33,4 +33,4 @@ module.exports = (app, config) ->
       request.post authOptions, (error, res, body) ->
         console.log body
 
-      res.redirect 'http://localhost:8080'
+      res.redirect config.domain
