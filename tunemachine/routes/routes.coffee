@@ -13,6 +13,9 @@ routes.init = (app, spotify, config, next) ->
   # Authenication
   routes.auth = require('./auth')(app, spotify, config)
 
+  # API
+  routes.api = require('./api')(app)
+
   next()
 
 module.exports = routes
