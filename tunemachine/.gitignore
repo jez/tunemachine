@@ -7,4 +7,6 @@ node_modules
 # Compiled frontend JS
 public/js/bundle.js
 
+.sass-cache
+
 
