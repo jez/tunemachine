@@ -1,2 +1,10 @@
 # Node dependencies
 node_modules
+
+# Vim
+.*.sw[nop]
+
+# Compiled frontend JS
+public/js/bundle.js
+
+
