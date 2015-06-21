@@ -9,6 +9,7 @@ routes.init = (app, next) ->
   delete routes.init
 
   # Authenication
+  routes.home = require('./home')(app)
   routes.auth = require('./auth')(app)
 
   next()
