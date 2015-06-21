@@ -25,10 +25,12 @@ module.exports = (app, models, spotify) ->
           display_name: me.display_name
           playlists: playlists.playlists
 
-
-  # GET /api/playlist/:playlistId/:snapId
-  app.get '/api/playlist/:playlistId/:snapId', (req, res) ->
-    res.end "Unimplemented. Playlist: #{req.params.playlistId} Snap: #{req.params.snapId}"
+  # GET /api/playlist/:playlistId
+  app.get '/api/playlist/:playlistId', requireLoggedIn, (req, res) ->
+    spotify.getSnapshot req.session.access_token, req.session.user_id, req.params.playlistId, (err, snap) ->
+      if err?
+        return res.end 'Failed'
+      res.json snap
 
   # POST /api/playlist/:playlistId
   app.post '/api/playlist/:playlistId', (req, res) ->
