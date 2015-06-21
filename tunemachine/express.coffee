@@ -32,6 +32,7 @@ web.init = (config, next) ->
       secure: false
     store: mongoStore
 
+  # logging
   web.express.use morgan 'dev'
 
   web.express.use bodyParser.urlencoded
