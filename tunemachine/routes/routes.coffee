@@ -10,8 +10,11 @@ routes.init = (app, config, next) ->
 
   routes.home = require('./home')(app)
 
-  # Authenication
+  # Authentication
   routes.auth = require('./auth')(app, config)
+
+  # API
+  routes.api = require('./api')(app)
 
   next()
 
