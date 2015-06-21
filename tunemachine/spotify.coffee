@@ -70,8 +70,6 @@ spotify.getSnapshot = (oAuthToken, userId, playlistId, next) ->
         if err?
           return next(err, null)
 
-        console.log body
-
         items = body.items.map (p) ->
           result = {}
           result.id = p.track.id

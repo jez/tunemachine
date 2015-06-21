@@ -24,31 +24,23 @@ models.init = (config, next) ->
         type: String
         required: true
 
-      Timestamp:
-        type: Date
-        required: true
-
-      Songs:
-        type: [String]
-        required: true
-
-    Snapshot = mongoose.model 'Snapshot', SnapshotSchema
-
-#===============================================================================
-# Playlists
-#===============================================================================
-    PlaylistSchema = new Schema
-      PlaylistID:
+      Playlist:
         type: String
         required: true
-        index:
-          unique: true
 
-      Snapshots:
-        type: [Snapshot]
-        required: true
+      Timestamp:
+        type: Date
 
-    Playlist = mongoose.model 'Playlist', PlaylistSchema
+      Tracks:
+        type: Array
+        default: []
+
+    SnapshotSchema.pre 'save', (next) ->
+      unless this.Timestamp?
+        this.Timestamp = new Date()
+      next()
+
+    Snapshot = mongoose.model 'Snapshot', SnapshotSchema
 
 #===============================================================================
 # Users
@@ -60,14 +52,9 @@ models.init = (config, next) ->
         index:
           unique: true
 
-      Playlists:
-        type: [Playlist]
-        default: []
-
     User = mongoose.model 'User', UserSchema
 
     models.Snapshot = Snapshot
-    models.Playlist = Playlist
     models.User = User
 
     # @function err
