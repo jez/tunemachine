@@ -6,7 +6,7 @@
 querystring = require 'querystring'
 request = require 'request'
 
-module.exports = (app, config) ->
+module.exports = (app, spotify, config) ->
 
   # GET /auth/login/
   app.get '/auth/login', (req, res) ->
@@ -31,7 +31,9 @@ module.exports = (app, config) ->
           client_secret: config.auth.secret
         json: true
 
-      request.post authOptions, (error, res, body) ->
-        console.log body
-
-      res.redirect config.domain
+      request.post authOptions, (error, _res, body) ->
+        spotify.getMe body.access_token, (err, values) ->
+          if err?
+            return res.end 'Error'
+          req.session.access_token = body.access_token
+          res.redirect config.domain

@@ -5,13 +5,13 @@
 
 routes = {}
 
-routes.init = (app, config, next) ->
+routes.init = (app, spotify, config, next) ->
   delete routes.init
 
   routes.home = require('./home')(app)
 
   # Authenication
-  routes.auth = require('./auth')(app, config)
+  routes.auth = require('./auth')(app, spotify, config)
 
   next()
 
