@@ -39,11 +39,13 @@ spotify.getPlaylists = (oAuthToken, userId, next) ->
         if err?
           return next(err, null)
 
-        items = body.items.map (p) ->
-          result = {}
-          result.id = p.id
-          result.name = p.name
-          return result
+        items = []
+        if body.items?
+          items = body.items.map (p) ->
+            result = {}
+            result.id = p.id
+            result.name = p.name
+            return result
 
         values.playlists = values.playlists.concat items
 
@@ -70,13 +72,15 @@ spotify.getSnapshot = (oAuthToken, userId, playlistId, next) ->
         if err?
           return next(err, null)
 
-        items = body.items.map (p) ->
-          result = {}
-          result.id = p.track.id
-          result.name = p.track.name
-          result.artist = p.track.artists.map (a) -> a.name
-            .join ", "
-          return result
+        items = []
+        if body.items?
+          items = body.items.map (p) ->
+            result = {}
+            result.id = p.track.id
+            result.name = p.track.name
+            result.artist = p.track.artists.map (a) -> a.name
+              .join ", "
+            return result
 
         values.songs = values.songs.concat items
 
