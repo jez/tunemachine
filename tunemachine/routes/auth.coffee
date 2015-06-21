@@ -53,3 +53,9 @@ module.exports = (app, models, spotify, config) ->
                       return models.err res, err
 
           res.redirect config.domain
+
+  app.get '/auth/logout', (req, res) ->
+    delete req.session.user_id
+    delete req.session.access_token
+
+    res.redirect config.domain
