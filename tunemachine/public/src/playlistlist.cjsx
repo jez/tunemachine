@@ -6,7 +6,7 @@ User = React.createClass
   render: ->
     <div className="tm-user">
       <img className="tm-user-avatar"
-          src="https://avatars1.githubusercontent.com/u/10713430?v=3&s=400" />
+          src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/p960x960/10848537_546033172204121_2712981497933985479_o.jpg" />
     </div>
 
 PlaylistItem = React.createClass
