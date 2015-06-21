@@ -175,13 +175,14 @@ p {
   padding: 8px 25px;
 
   background-color: $tm-white;
-  border-bottom: 1px solid $tm-white;
-  border-radius: 5px;
+  border-right: 5px solid $tm-white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   cursor: pointer;
 
   &.active,
   &:hover {
-    border-bottom: 1px solid $tm-yellow;
+    border-right: 5px solid $tm-yellow;
   }
 
   // DOTS!!!

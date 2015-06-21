@@ -3,9 +3,30 @@ _ = require 'underscore'
 React = require 'react'
 
 SnapshotCopyButton = React.createClass
+  handleClick: (e) ->
+    e.preventDefault()
+    $.post "/playlists/#{this.props.playlist.id}",
+      data:
+        name: "Revert #{this.props.playlist.name}"
+      (snapshot) ->
+        $('body').trigger
+          type: 'tm:snapshot'
+          playlist_id: this.props.playlist_id
+          snapshot: snapshot
+
+        $('body').trigger
+          type: 'tm:add-snapshot'
+          snapshot:
+            id: snapshot.id
+            count: snapshot.count
+            name: snapshot.name
+            timestamp: snapshot.timestamp
+
+
   render: ->
-    <a href="#" className="tm-button">
-      Copy
+    <a href="/api/playlist/#{this.props.playlist_id}" className="tm-button"
+        onClick={this.handleClick}>
+      New
     </a>
 
 SnapshotItem = React.createClass
@@ -14,7 +35,7 @@ SnapshotItem = React.createClass
     if this.props.selected
       className += " active"
 
-    <div className={className}>
+    <div className={className} onClick={this.props.onClick}>
       <div className="tm-snapshot-item-title">{this.props.title}</div>
       <div className="tm-snapshot-item-info">from {this.props.timestamp}</div>
       <div className="tm-snapshot-item-info">{this.props.count} songs</div>
@@ -67,20 +88,61 @@ SnapshotList = React.createClass
         count: 93
       ,
     ]
+    selected: 0
+
+  handleClick: (idx) ->
+    newSnapshots = this.state.snapshots
+    newSnapshots[this.state.selected]['selected'] = false
+    newSnapshots[idx]['selected'] = true
+
+    this.setState
+      selected: idx
+      snapshots: newSnapshots
+
+    $('body').trigger
+      type: 'tm:snapshot'
+      playlist: newSnapshots[idx]
 
   componentDidMount: ->
     $('body').on 'tm:playlist', (e) =>
+      selected = -1
+      if e.playlist.snapshots[0]?
+        e.playlist.snapshots[0]['selected'] = true
+        selected = 0
+
       this.setState
-        playlist: e.playlist
-        snapshots: []
+        playlist:
+          key: e.playlist.id
+          name: e.playlist.name
+        snapshots: e.playlist.snapshots
+        selected: selected
+
+      if e.playlist.snapshots[0]?
+        snapshot = e.playlist.snapshot[0]
+      $('body').trigger
+        type: 'tm:snapshot'
+        playlist_id: e.playlist.id
+        snapshot: snapshot
+
+    $('body').on 'tm:add-playlist', (e) =>
+      e.snapshot.selected = true
+      newSnapshots = this.state.snapshots
+      newSnapshots.unshift(e.snapshot)
+
+      if this.state.selected >= 0
+        newSnapshots[this.state.selected] = false
+      this.setState
+        snapshots: newSnapshots
+        selected: 0
+
 
   render: ->
-    snapshotItems = _.map this.state.snapshots, (snapshot) ->
-      <SnapshotItem {...snapshot} />
+    snapshotItems = _.map this.state.snapshots, (snapshot, idx) =>
+      <SnapshotItem {...snapshot} onClick={this.handleClick.bind(this, idx)}/>
 
     <div className="tm-snapshot-list">
-      <h1>Copy {this.state.playlist.name}</h1>
-      <SnapshotCopyButton />
+      <h1>Snapshots</h1>
+      <SnapshotCopyButton playlist={this.state.playlist} />
       <p>
         Copy the newest version of your playlist and go back to this version
         whenever you want to in the future.
