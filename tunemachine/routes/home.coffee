@@ -8,5 +8,5 @@ module.exports = (app) ->
   # GET /login
   app.get '/', (req, res) ->
     res.render 'index',
-      title: 'Express'
+      title: 'TuneMachine'
     res.end()

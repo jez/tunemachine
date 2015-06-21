@@ -100,10 +100,13 @@ module.exports = (app, models, spotify) ->
       res.end 'Need name'
     else
       models.Snapshot.findOne
-        id: req.params.snapId
+        _id: req.params.snapId
       , (err, snap) ->
         if err?
           return models.err res, err
+
+        console.log req.params.snapId
+        console.log snap
 
         if snap?
           songs = snap.Tracks.map (s) -> s.id
