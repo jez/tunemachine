@@ -5,11 +5,11 @@
 
 routes = {}
 
-routes.init = (app, next) ->
+routes.init = (app, config, next) ->
   delete routes.init
 
   # Authenication
-  routes.auth = require('./auth')(app)
+  routes.auth = require('./auth')(app, config)
 
   next()
 
