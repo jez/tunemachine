@@ -88,6 +88,7 @@ module.exports = (app, models, spotify) ->
         s.save (err) ->
           if err?
             return models.err res, err
+          req.snapId = s.id
           get req, res
 
   # POST /api/playlist/:playlistId
