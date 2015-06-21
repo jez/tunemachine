@@ -67,7 +67,7 @@ module.exports = (app, models, spotify) ->
           res.status = 404
           res.end()
 
-  # GET /api/playlist/:playlistId
+  # GET /api/playlist/:playlistId/:snapId
   app.get '/api/playlist/:playlistId/:snapId', requireLoggedIn, get
 
   post = (req, res) ->
