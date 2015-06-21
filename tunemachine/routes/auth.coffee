@@ -6,7 +6,7 @@
 querystring = require 'querystring'
 request = require 'request'
 
-module.exports = (app, spotify, config) ->
+module.exports = (app, models, spotify, config) ->
 
   # GET /auth/login/
   app.get '/auth/login', (req, res) ->
@@ -35,5 +35,21 @@ module.exports = (app, spotify, config) ->
         spotify.getMe body.access_token, (err, values) ->
           if err?
             return res.end 'Error'
+          req.session.user_id = values.id
           req.session.access_token = body.access_token
+
+          models.User.findOne
+              UserID: req.session.user_id
+            , (err, user) ->
+              if err?
+                return models.err res, err
+
+              unless user?
+                user = new models.User
+                    UserID: req.session.user_id
+
+                  user.save (err) ->
+                    if err?
+                      return models.err res, err
+
           res.redirect config.domain

@@ -5,16 +5,16 @@
 
 routes = {}
 
-routes.init = (app, spotify, config, next) ->
+routes.init = (app, models, spotify, config, next) ->
   delete routes.init
 
   routes.home = require('./home')(app)
 
   # Authenication
-  routes.auth = require('./auth')(app, spotify, config)
+  routes.auth = require('./auth')(app, models, spotify, config)
 
   # API
-  routes.api = require('./api')(app)
+  routes.api = require('./api')(app, models, spotify)
 
   next()
 

@@ -62,7 +62,7 @@ models.init = (config, next) ->
 
       Playlists:
         type: [Playlist]
-        required: true
+        default: []
 
     User = mongoose.model 'User', UserSchema
 

@@ -13,7 +13,7 @@ app.models = require './models'
 app.spotify = require './spotify'
 
 app.web.init app.config, () ->
-  app.routes.init app.web.express, app.spotify, app.config, () ->
-    app.models.init app.config, () ->
+  app.models.init app.config, () ->
+    app.routes.init app.web.express, app.models, app.spotify, app.config, () ->
       app.web.express.listen app.config.port
       console.log "Server listening on port #{ app.config.port }"
