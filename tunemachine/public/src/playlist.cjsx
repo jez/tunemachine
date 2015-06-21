@@ -5,24 +5,34 @@ React = require 'react'
 PlaylistRestoreButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    $.put "/playlists/#{this.props.playlist_id}/#{this.props.id}",
-      (snapshot) ->
-        $('body').trigger
-          type: 'tm:snapshot'
-          playlist_id: this.props.playlist_id
-          snapshot: snapshot
+    $.ajax
+      type: 'PUT'
+      url: "/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
+      data:
+        name: "Revert #{this.props.name}"
+      json: true
+      success: () =>
+          $('body').trigger
+            type: 'tm:snapshot'
+            playlist_id: this.props.playlist_id
+            snapshot:
+              key: this.props.key_
+              timestamp: this.props.timestamp
+              count: this.props.count
+              name: this.props.name
+              tracks: this.props.tracks
 
-        $('body').trigger
-          type: 'tm:add-snapshot'
-          snapshot:
-            id: snapshot.id
-            count: snapshot.count
-            name: snapshot.name
-            timestamp: snapshot.timestamp
+          $('body').trigger
+            type: 'tm:add-snapshot'
+            snapshot:
+              key: this.props.key_
+              timestamp: this.props.timestamp
+              count: this.props.count
+              name: this.props.name
 
 
   render: ->
-    <a href="/playlists/#{this.props.playlist_id}/#{this.props.id}"
+    <a href="/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
         className="tm-button" onClick={this.handleClick}>
       Restore
     </a>
@@ -36,7 +46,7 @@ Track = React.createClass
 
 Playlist = React.createClass
   getInitialState: ->
-    id: -1
+    key: -1
     name: 'Too many parties'
     timestamp: '06/20/2015'
     count: 50
@@ -72,13 +82,15 @@ Playlist = React.createClass
 
   componentDidMount: ->
     $('body').on 'tm:snapshot', (e) =>
-      $.get "/api/playlist/#{e.playlist_id}/#{e.snapshot.id}", (snapshot) =>
+      $.get "/api/playlist/#{e.playlist_id}/#{e.snapshot.key}", (snapshot) =>
         tracks = _.map snapshot.tracks, (track) ->
           key: track.id
           name: track.name
           artist: track.artist
 
         this.setState
+          playlist_id: e.playlist_id
+          key: e.snapshot.key
           name: snapshot.name
           timestamp: snapshot.timestamp
           count: snapshot.count
@@ -90,7 +102,7 @@ Playlist = React.createClass
 
     <div className="tm-playlist">
       <h1>{this.state.name}</h1>
-      <PlaylistRestoreButton {...this.state}/>
+      <PlaylistRestoreButton {...this.state} key_={this.state.key}/>
       <p>
         Restore your playlist back in time. Restoring will create a new
         snapshot for your convenience.

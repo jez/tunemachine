@@ -43,9 +43,14 @@ PlaylistList = React.createClass
   componentDidMount: ->
     $.get '/api/me', (data) =>
       playlists = _.map data.playlists, (playlist) ->
+        snapshots = _.map playlist.snapshots, (snapshot) ->
+          key: snapshot.id
+          count: snapshot.count
+          name: snapshot.name
+          timestamp: snapshot.timestamp
         key: playlist.id
         name: playlist.name
-        snapshots: playlist.snapshots
+        snapshots: snapshots
 
       selected = -1
       if playlists[0]?
