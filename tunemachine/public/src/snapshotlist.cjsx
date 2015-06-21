@@ -7,7 +7,7 @@ addSnapshot = (playlist_id, newName) ->
     type: 'POST'
     url: "/api/playlist/#{playlist_id}"
     data:
-      name: "Revert #{newName}"
+      name: "#{newName}"
     json: true
     success: (snapshot) ->
       $('body').trigger
@@ -26,7 +26,7 @@ addSnapshot = (playlist_id, newName) ->
 SnapshotCopyButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    addSnapshot(this.state.playlist.id, "Revert #{this.state.playlist.name}")
+    addSnapshot(this.props.playlist.key, "Revert #{this.props.playlist.name}")
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist_id}" className="tm-button"
@@ -52,46 +52,10 @@ SnapshotList = React.createClass
       name: 'Party music'
     snapshots: [
         key: 1
-        title: 'Too many parties'
+        name: 'Too many parties'
         timestamp: '06/20/2015'
         count: 50
         selected: true
-      ,
-        key: 2
-        title: 'My fifth party in June'
-        timestamp: '06/17/2015'
-        count: 87
-      ,
-        key: 3
-        title: 'My fourth party in June'
-        timestamp: '06/13/2015'
-        count: 62
-      ,
-        key: 4
-        title: 'My third party in June'
-        timestamp: '06/09/2015'
-        count: 59
-      ,
-        key: 5
-        title: 'My second party in June'
-        timestamp: '06/05/2015'
-        count: 102
-      ,
-        key: 6
-        title: 'My first party in June'
-        timestamp: '06/01/2015'
-        count: 93
-      ,
-        key: 7
-        title: 'My second party in June'
-        timestamp: '06/05/2015'
-        count: 102
-      ,
-        key: 8
-        title: 'My first party in June'
-        timestamp: '06/01/2015'
-        count: 93
-      ,
     ]
     selected: 0
 
@@ -117,7 +81,7 @@ SnapshotList = React.createClass
 
       this.setState
         playlist:
-          key: e.playlist.id
+          key: e.playlist.key
           name: e.playlist.name
         snapshots: e.playlist.snapshots
         selected: selected
@@ -125,10 +89,10 @@ SnapshotList = React.createClass
       if e.playlist.snapshots[0]?
         $('body').trigger
           type: 'tm:snapshot'
-          playlist_id: e.playlist.id
+          playlist_id: e.playlist.key
           snapshot: e.playlist.snapshots[0]
       else
-        addSnapshot(this.state.playlist.key, "Initial snapshot")
+        addSnapshot(e.playlist.key, "Initial snapshot")
 
 
     $('body').on 'tm:add-snapshot', (e) =>
