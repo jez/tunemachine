@@ -46,14 +46,17 @@ PlaylistList = React.createClass
         key: playlist.id
         name: playlist.name
         snapshots: playlist.snapshots
+
+      selected = -1
       if playlists[0]?
         playlists[0]['selected'] = true
+        selected: 0
 
       this.setState
         user_id: data.user_id
         display_name: data.display_name
         playlists: playlists
-        selected: 0
+        selected: selected
 
       $('body').trigger
         type: 'tm:user'
@@ -61,7 +64,7 @@ PlaylistList = React.createClass
         display_name: data.display_name
 
       if data.playlists[0]?
-        playlist = data.playlist[0]
+        playlist = data.playlists[0]
       $('body').trigger
         type: 'tm:playlist'
         playlist: playlist

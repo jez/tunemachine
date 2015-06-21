@@ -2,26 +2,31 @@ $ = require 'jquery'
 _ = require 'underscore'
 React = require 'react'
 
+addSnapshot = (playlist_id, newName) ->
+  $.ajax
+    type: 'POST'
+    url: "/api/playlist/#{playlist_id}"
+    data:
+      name: "Revert #{newName}"
+    json: true
+    success: (snapshot) ->
+      $('body').trigger
+        type: 'tm:snapshot'
+        playlist_id: playlist_id
+        snapshot: snapshot
+
+      $('body').trigger
+        type: 'tm:add-snapshot'
+        snapshot:
+          id: snapshot.id
+          count: snapshot.count
+          name: snapshot.name
+          timestamp: snapshot.timestamp
+
 SnapshotCopyButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    $.post "/playlists/#{this.props.playlist.id}",
-      data:
-        name: "Revert #{this.props.playlist.name}"
-      (snapshot) ->
-        $('body').trigger
-          type: 'tm:snapshot'
-          playlist_id: this.props.playlist_id
-          snapshot: snapshot
-
-        $('body').trigger
-          type: 'tm:add-snapshot'
-          snapshot:
-            id: snapshot.id
-            count: snapshot.count
-            name: snapshot.name
-            timestamp: snapshot.timestamp
-
+    addSnapshot(this.state.playlist.id, this.state.playlist.name)
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist_id}" className="tm-button"
@@ -118,11 +123,13 @@ SnapshotList = React.createClass
         selected: selected
 
       if e.playlist.snapshots[0]?
-        snapshot = e.playlist.snapshot[0]
-      $('body').trigger
-        type: 'tm:snapshot'
-        playlist_id: e.playlist.id
-        snapshot: snapshot
+        $('body').trigger
+          type: 'tm:snapshot'
+          playlist_id: e.playlist.id
+          snapshot: e.playlist.snapshots[0]
+      else
+        addSnapshot(this.state.playlist.key, this.state.playlist.name)
+
 
     $('body').on 'tm:add-playlist', (e) =>
       e.snapshot.selected = true
