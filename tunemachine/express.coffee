@@ -7,6 +7,7 @@
 web = {}
 
 express = require 'express'
+path = require 'path'
 
 morgan = require 'morgan'
 bodyParser = require 'body-parser'
@@ -18,7 +19,11 @@ MongoStore = MongoStore session
 web.init = (config, next) ->
   delete web.init
   web.express = express()
-  web.express.use(express.static('public'))
+  web.express.use express.static(path.join(__dirname, 'public'))
+
+  # view engine setup
+  web.express.set 'views', path.join(__dirname, 'views')
+  web.express.set 'view engine', 'jade'
 
   # session initialisation
   mongoStore = new MongoStore
@@ -34,6 +39,9 @@ web.init = (config, next) ->
 
   web.express.use morgan 'dev'
 
+  # uncomment after placing your favicon in /public
+  #web.express.use(favicon(__dirname + '/public/favicon.ico'))
+  web.express.use bodyParser.json()
   web.express.use bodyParser.urlencoded
     extended: true
 
