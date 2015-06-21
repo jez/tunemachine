@@ -26,7 +26,7 @@ addSnapshot = (playlist_id, newName) ->
 SnapshotCopyButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    addSnapshot(this.state.playlist.id, this.state.playlist.name)
+    addSnapshot(this.state.playlist.id, "Revert #{this.state.playlist.name}")
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist_id}" className="tm-button"
@@ -41,7 +41,7 @@ SnapshotItem = React.createClass
       className += " active"
 
     <div className={className} onClick={this.props.onClick}>
-      <div className="tm-snapshot-item-title">{this.props.title}</div>
+      <div className="tm-snapshot-item-title">{this.props.name}</div>
       <div className="tm-snapshot-item-info">from {this.props.timestamp}</div>
       <div className="tm-snapshot-item-info">{this.props.count} songs</div>
     </div>
@@ -128,19 +128,29 @@ SnapshotList = React.createClass
           playlist_id: e.playlist.id
           snapshot: e.playlist.snapshots[0]
       else
-        addSnapshot(this.state.playlist.key, this.state.playlist.name)
+        addSnapshot(this.state.playlist.key, "Initial snapshot")
 
 
-    $('body').on 'tm:add-playlist', (e) =>
-      e.snapshot.selected = true
+    $('body').on 'tm:add-snapshot', (e) =>
       newSnapshots = this.state.snapshots
-      newSnapshots.unshift(e.snapshot)
+      newSnapshots.unshift
+        selected: true
+        key: e.snapshot.id
+        name: e.snapshot.name
+        timestamp: e.snapshot.name
+        count: e.snapshot.count
+        tracks: e.snapshot.tracks
 
       if this.state.selected >= 0
         newSnapshots[this.state.selected] = false
       this.setState
         snapshots: newSnapshots
         selected: 0
+
+      $('body').trigger
+        type: 'tm:snapshot'
+        playlist_id: this.state.playlist.key
+        snapshot: e.snapshot
 
 
   render: ->
