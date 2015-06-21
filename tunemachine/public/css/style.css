@@ -1,8 +1,285 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@charset "UTF-8";
+/* line 5, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
-a {
-  color: #00B7FF;
+/* line 22, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 23, ../sass/style.scss */
+html, body {
+  font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
+  font-size: 100%;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+/* line 34, ../sass/style.scss */
+header {
+  height: 60px;
+  background: #f1cf30;
+}
+
+/* line 40, ../sass/style.scss */
+.tm-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 970px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* line 49, ../sass/style.scss */
+.tm-brand-logo {
+  height: 39px;
+}
+
+/* line 53, ../sass/style.scss */
+.tm-user-header {
+  display: flex;
+  align-items: center;
+}
+/* line 57, ../sass/style.scss */
+.tm-user-header img {
+  height: 30px;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+/* line 64, ../sass/style.scss */
+.tm-wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/* line 72, ../sass/style.scss */
+.tm-main {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* line 79, ../sass/style.scss */
+h1 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* line 84, ../sass/style.scss */
+p {
+  margin-bottom: 20px;
+  color: #9b9b9b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* line 94, ../sass/style.scss */
+.tm-playlist-list {
+  overflow-y: scroll;
+  width: 300px;
+  color: white;
+  background: #333;
+}
+/* line 102, ../sass/style.scss */
+.tm-playlist-list h1 {
+  margin: 20px 25px;
+  font-size: 14px;
+}
+
+/* line 108, ../sass/style.scss */
+.tm-user {
+  display: flex;
+  justify-content: center;
+  height: 150px;
+}
+/* line 114, ../sass/style.scss */
+.tm-user img {
+  align-self: center;
+  height: 55px;
+  width: 55px;
+  border-radius: 28px;
+}
+
+/* line 124, ../sass/style.scss */
+.tm-playlist-item {
+  padding: 9px;
+  padding-left: 20px;
+  margin-top: 2px;
+  background: rgba(155, 155, 155, 0.07);
+  color: #9b9b9b;
+  cursor: pointer;
+  font-size: 12px;
+}
+/* line 134, ../sass/style.scss */
+.tm-playlist-item.active {
+  padding-left: 16px;
+  color: white;
+  border-left: 5px solid #f1cf30;
+}
+
+/* line 144, ../sass/style.scss */
+.tm-snapshot-list {
+  overflow-y: scroll;
+  width: 350px;
+  padding: 35px;
+}
+
+/* line 152, ../sass/style.scss */
+.tm-button {
+  display: block;
+  float: right;
+  margin-left: 35px;
+  padding: 11px 0;
+  width: 80px;
+  background-color: #f1cf30;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* line 169, ../sass/style.scss */
+.tm-snapshot-item {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  padding: 8px 25px;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* line 180, ../sass/style.scss */
+.tm-snapshot-item.active {
+  border-bottom: 1px solid #f1cf30;
+}
+/* line 185, ../sass/style.scss */
+.tm-snapshot-item:before {
+  content: ' ';
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: -28px;
+  border: 6px solid #f1cf30;
+  border-radius: 9px;
+  display: inline-block;
+  box-sizing: border-box;
+}
+/* line 196, ../sass/style.scss */
+.tm-snapshot-item:after {
+  content: '• • • • •';
+  width: 7px;
+  height: 70px;
+  position: absolute;
+  top: 28px;
+  left: -22px;
+  color: #9b9b9b;
+  display: block;
+  box-sizing: border-box;
+  line-height: 0.88;
+}
+
+/* line 210, ../sass/style.scss */
+.tm-snapshot-item-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* line 216, ../sass/style.scss */
+.tm-snapshot-item-info {
+  line-height: 1.5;
+  color: #9b9b9b;
+  font-size: 12px;
+}
+
+/* line 225, ../sass/style.scss */
+.tm-playlist {
+  overflow-y: scroll;
+  padding: 25px;
+  width: 320px;
+  background-color: white;
+}
+
+/* line 234, ../sass/style.scss */
+.tm-songs-table {
+  margin: 30px -5px;
+  border-collapse: separate;
+  border-spacing: 5px 0;
+}
+/* line 239, ../sass/style.scss */
+.tm-songs-table th {
+  font-size: 16px;
+}
+/* line 242, ../sass/style.scss */
+.tm-songs-table td {
+  max-width: 200px;
+  padding: 13px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #9b9b9b;
+  font-size: 13px;
 }
