@@ -1,0 +1,252 @@
+@import 'compass/reset';
+
+$tm-background: #f0f0f0;
+
+$tm-yellow: #f1cf30;
+$tm-white: white;
+$tm-grey-dark: #333;
+$tm-grey-light: #9b9b9b;
+
+$tm-title-large: 16px;
+$tm-title-small: 14px;
+
+$tm-text-large: 13px;
+$tm-text-normal: 12px;
+$tm-text-small: 11px;
+
+$tm-button-underline: rgba(0, 0, 0, 0.15);
+
+$tm-playlist-list-width: 300px;
+$tm-snapshot-list-width: 350px;
+$tm-playlist-width: 320px;
+
+html, body {
+  font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
+  font-size: 100%;
+  box-sizing: border-box;
+
+  color: #333;
+  background-color: $tm-background;
+}
+
+// --- TMHeader ---
+
+header {
+  height: 60px;
+
+  background: $tm-yellow;
+}
+
+.tm-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $tm-playlist-list-width + $tm-snapshot-list-width + $tm-playlist-width;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.tm-brand-logo {
+  height: 39px;
+}
+
+.tm-user-header {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 30px;
+    display: inline-block;
+    margin-right: 15px;
+  }
+}
+
+.tm-wrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+// --- General ---
+
+.tm-main {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: stretch;
+}
+
+h1 {
+  font-size: $tm-title-large;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+
+  color: $tm-grey-light;
+  font-size: $tm-text-normal;
+  line-height: 1.4;
+}
+
+// --- PlaylistList ---
+
+.tm-playlist-list {
+  overflow-y: scroll;
+
+  width: $tm-playlist-list-width;
+
+  color: $tm-white;
+  background: $tm-grey-dark;
+
+  h1 {
+    margin: 20px 25px;
+    font-size: $tm-title-small;
+  }
+}
+
+.tm-user {
+  display: flex;
+  justify-content: center;
+
+  height: 150px;
+
+  img {
+    align-self: center;
+
+    height: 55px;
+    width: 55px;
+
+    border-radius: 28px;
+  }
+}
+
+.tm-playlist-item {
+  padding: 9px;
+  padding-left: 20px;
+  margin-top: 2px;
+
+  background: rgba(155, 155, 155, 0.07);
+  color: $tm-grey-light;
+  cursor: pointer;
+  font-size: $tm-text-normal;
+
+  &.active {
+    padding-left: 16px;
+
+    color: $tm-white;
+    border-left: 5px solid $tm-yellow;
+  }
+}
+
+// --- SnapshotList ---
+
+.tm-snapshot-list {
+  overflow-y: scroll;
+
+  width: $tm-snapshot-list-width;
+
+  padding: 35px;
+}
+
+.tm-button {
+  display: block;
+  float: right;
+  margin-left: 35px;
+
+  padding: 11px 0;
+  width: 80px;
+
+  background-color: $tm-yellow;
+  border-bottom: 2px solid $tm-button-underline;
+  border-radius: 5px;
+  color: white;
+  font-size: $tm-text-large;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tm-snapshot-item {
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: 15px;
+
+  padding: 8px 25px;
+
+  background-color: $tm-white;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 1px solid $tm-yellow;
+  }
+
+  // DOTS!!!
+  &:before {
+    content: ' ';
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: -28px;
+    border: 6px solid $tm-yellow;
+    border-radius: 9px;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  &:after {
+    content: '• • • • •';
+    width: 7px;
+    height: 70px;
+    position: absolute;
+    top: 28px;
+    left: -22px;
+    color: $tm-grey-light;
+    display: block;
+    box-sizing: border-box;
+    line-height: 0.88;
+  }
+}
+
+.tm-snapshot-item-title {
+  margin-bottom: 10px;
+
+  font-size: $tm-title-small;
+}
+
+.tm-snapshot-item-info {
+  line-height: 1.5;
+
+  color: $tm-grey-light;
+  font-size: $tm-text-normal;
+}
+
+// --- Playlist ---
+
+.tm-playlist {
+  overflow-y: scroll;
+  padding: 25px;
+
+  width: $tm-playlist-width;
+
+  background-color: $tm-white;
+}
+
+.tm-songs-table {
+  margin: 30px -5px;
+  border-collapse: separate;
+  border-spacing: 5px 0;
+
+  th {
+    font-size: $tm-title-large;
+  }
+  td {
+    max-width: 200px;
+    padding: 13px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    color: $tm-grey-light;
+    font-size: $tm-text-large;
+  }
+}
