@@ -17,16 +17,15 @@ $tm-text-small: 11px;
 $tm-button-underline: rgba(0, 0, 0, 0.15);
 
 $tm-playlist-list-width: 300px;
-$tm-snapshot-list-width: 350px;
-$tm-playlist-width: 320px;
+$tm-snapshot-list-width: 420px;
+$tm-playlist-width: 370px;
 
 html, body {
   font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
   font-size: 100%;
-  box-sizing: border-box;
 
   color: #333;
-  background-color: $tm-background;
+  background-color: $tm-yellow;
 }
 
 // --- TMHeader ---
@@ -41,7 +40,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: $tm-playlist-list-width + $tm-snapshot-list-width + $tm-playlist-width;
+  max-width: $tm-playlist-list-width + $tm-snapshot-list-width + $tm-playlist-width - 30px;
   margin: 0 auto;
   height: 100%;
 }
@@ -94,6 +93,7 @@ p {
 .tm-playlist-list {
   overflow-y: scroll;
 
+  box-sizing: border-box;
   width: $tm-playlist-list-width;
 
   color: $tm-white;
@@ -101,7 +101,7 @@ p {
 
   h1 {
     margin: 20px 25px;
-    font-size: $tm-title-small;
+    font-size: $tm-title-large;
   }
 }
 
@@ -122,20 +122,20 @@ p {
 }
 
 .tm-playlist-item {
-  padding: 9px;
+  padding: 10px;
   padding-left: 20px;
   margin-top: 2px;
 
   background: rgba(155, 155, 155, 0.07);
   color: $tm-grey-light;
   cursor: pointer;
-  font-size: $tm-text-normal;
+  font-size: $tm-title-small;
 
   &.active {
     padding-left: 16px;
 
     color: $tm-white;
-    border-left: 5px solid $tm-yellow;
+    border-right: 5px solid $tm-yellow;
   }
 }
 
@@ -144,9 +144,12 @@ p {
 .tm-snapshot-list {
   overflow-y: scroll;
 
+  box-sizing: border-box;
   width: $tm-snapshot-list-width;
 
   padding: 35px;
+
+  background-color: $tm-background;
 }
 
 .tm-button {
@@ -174,10 +177,12 @@ p {
   padding: 8px 25px;
 
   background-color: $tm-white;
+  border-bottom: 1px solid $tm-white;
   border-radius: 5px;
   cursor: pointer;
 
-  &.active {
+  &.active,
+  &:hover {
     border-bottom: 1px solid $tm-yellow;
   }
 
@@ -193,7 +198,7 @@ p {
     display: inline-block;
     box-sizing: border-box;
   }
-  &:after {
+  &:not(:last-child):after {
     content: '• • • • •';
     width: 7px;
     height: 70px;
@@ -226,6 +231,7 @@ p {
   overflow-y: scroll;
   padding: 25px;
 
+  box-sizing: border-box;
   width: $tm-playlist-width;
 
   background-color: $tm-white;
