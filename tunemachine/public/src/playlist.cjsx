@@ -230,8 +230,8 @@ Playlist = React.createClass
       <h1>{this.state.title}</h1>
       <PlaylistRestoreButton />
       <p>
-        from {this.state.timestamp}<br />
-        {this.state.count} songs
+        Restore your playlist back in time. Restoring will create a new
+        snapshot for your convenience.
       </p>
       <table className="tm-songs-table">
         <thead>

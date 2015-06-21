@@ -1,3 +1,4 @@
+$ = require 'jquery'
 _ = require 'underscore'
 React = require 'react'
 
@@ -13,35 +14,59 @@ PlaylistItem = React.createClass
     className = "tm-playlist-item"
     if this.props.selected
       className += " active"
-    <div className={className}>{this.props.name}</div>
+    <div className={className} onClick={this.props.onClick}>{this.props.name}</div>
 
 
 PlaylistList = React.createClass
   getInitialState: ->
     playlists: [
-        key: 1
-        name: 'Beyonce'
-      ,
-        key: 2
-        name: 'Lana Del Rey'
-      ,
-        key: 3
-        name: 'Party music'
+        key: -1
+        name: 'Loading playlists...'
         selected: true
       ,
-        key: 4
-        name: 'Rock & roll'
-      ,
-        key: 5
-        name: 'Country music'
-      ,
-        key: 6
-        name: 'Workout music'
     ]
+    selected: 0
+
+  handleClick: (idx) ->
+    newPlaylists = this.state.playlists
+    newPlaylists[this.state.selected]['selected'] = false
+    newPlaylists[idx]['selected'] = true
+
+    this.setState
+      selected: idx
+      playlists: newPlaylists
+
+    $('body').trigger
+      type: 'tm:playlist'
+      playlist: newPlaylists[idx]
+
+  componentDidMount: ->
+    $.get '/api/me', (data) =>
+      playlists = _.map data.playlists, (playlist) ->
+        key: playlist.id
+        name: playlist.name
+      playlists[0]['selected'] = true
+
+      this.setState
+        user_id: data.user_id
+        display_name: data.display_name
+        playlists: playlists
+        selected: 0
+
+      $('body').trigger
+        type: 'tm:user'
+        user_id: data.user_id
+        display_name: data.display_name
+
+      $('body').trigger
+        type: 'tm:playlist'
+        playlist: data.playlists[0]
+
+      null
 
   render: ->
-    playlistItems = _.map this.state.playlists, (playlist) ->
-      <PlaylistItem {...playlist} />
+    playlistItems = _.map this.state.playlists, (playlist, idx) =>
+      <PlaylistItem {...playlist} onClick={this.handleClick.bind(this, idx)}/>
 
     <div className="tm-playlist-list">
       <User />

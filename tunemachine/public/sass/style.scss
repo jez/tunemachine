@@ -132,8 +132,6 @@ p {
   font-size: $tm-title-small;
 
   &.active {
-    padding-left: 16px;
-
     color: $tm-white;
     border-right: 5px solid $tm-yellow;
   }
@@ -229,7 +227,7 @@ p {
 
 .tm-playlist {
   overflow-y: scroll;
-  padding: 25px;
+  padding: 35px;
 
   box-sizing: border-box;
   width: $tm-playlist-width;

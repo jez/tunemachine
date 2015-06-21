@@ -174,12 +174,11 @@ p {
 }
 /* line 134, ../sass/style.scss */
 .tm-playlist-item.active {
-  padding-left: 16px;
   color: white;
   border-right: 5px solid #f1cf30;
 }
 
-/* line 144, ../sass/style.scss */
+/* line 142, ../sass/style.scss */
 .tm-snapshot-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -188,7 +187,7 @@ p {
   background-color: #f0f0f0;
 }
 
-/* line 155, ../sass/style.scss */
+/* line 153, ../sass/style.scss */
 .tm-button {
   display: block;
   float: right;
@@ -204,7 +203,7 @@ p {
   text-decoration: none;
 }
 
-/* line 172, ../sass/style.scss */
+/* line 170, ../sass/style.scss */
 .tm-snapshot-item {
   position: relative;
   margin-left: 20px;
@@ -215,11 +214,11 @@ p {
   border-radius: 5px;
   cursor: pointer;
 }
-/* line 184, ../sass/style.scss */
+/* line 182, ../sass/style.scss */
 .tm-snapshot-item.active, .tm-snapshot-item:hover {
   border-bottom: 1px solid #f1cf30;
 }
-/* line 190, ../sass/style.scss */
+/* line 188, ../sass/style.scss */
 .tm-snapshot-item:before {
   content: ' ';
   width: 18px;
@@ -231,7 +230,7 @@ p {
   display: inline-block;
   box-sizing: border-box;
 }
-/* line 201, ../sass/style.scss */
+/* line 199, ../sass/style.scss */
 .tm-snapshot-item:not(:last-child):after {
   content: '• • • • •';
   width: 7px;
@@ -245,39 +244,39 @@ p {
   line-height: 0.88;
 }
 
-/* line 215, ../sass/style.scss */
+/* line 213, ../sass/style.scss */
 .tm-snapshot-item-title {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* line 221, ../sass/style.scss */
+/* line 219, ../sass/style.scss */
 .tm-snapshot-item-info {
   line-height: 1.5;
   color: #9b9b9b;
   font-size: 12px;
 }
 
-/* line 230, ../sass/style.scss */
+/* line 228, ../sass/style.scss */
 .tm-playlist {
   overflow-y: scroll;
-  padding: 25px;
+  padding: 35px;
   box-sizing: border-box;
   width: 370px;
   background-color: white;
 }
 
-/* line 240, ../sass/style.scss */
+/* line 238, ../sass/style.scss */
 .tm-songs-table {
   margin: 30px -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 }
-/* line 245, ../sass/style.scss */
+/* line 243, ../sass/style.scss */
 .tm-songs-table th {
   font-size: 16px;
 }
-/* line 248, ../sass/style.scss */
+/* line 246, ../sass/style.scss */
 .tm-songs-table td {
   max-width: 200px;
   padding: 13px 0;

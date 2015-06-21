@@ -1,3 +1,4 @@
+$ = require 'jquery'
 _ = require 'underscore'
 React = require 'react'
 
@@ -66,6 +67,12 @@ SnapshotList = React.createClass
         count: 93
       ,
     ]
+
+  componentDidMount: ->
+    $('body').on 'tm:playlist', (e) =>
+      this.setState
+        playlist: e.playlist
+        snapshots: []
 
   render: ->
     snapshotItems = _.map this.state.snapshots, (snapshot) ->
