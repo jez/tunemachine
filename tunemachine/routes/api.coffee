@@ -117,6 +117,3 @@ module.exports = (app, models, spotify) ->
         else
           res.status 404
           res.end()
-
-    res.status 200
-    res.end()
