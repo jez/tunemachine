@@ -23,6 +23,8 @@ config.db.url ?= default_db_url
 # auth magic
 
 config.auth = {}
-config.auth.secret ?= process.env.AUTH_SECRET
-config.auth.secret = 'THISISASHITTYAUTHSECRET'
+config.auth.clientId = process.env.CLIENT_ID
+config.auth.clientId ?= '80336a1812ac49b4a2e09be91d45bfeb'
+config.auth.secret = process.env.AUTH_SECRET
+config.auth.secret ?= '2d91683130494b3ba4f6d420b87fe851'
 module.exports = config
