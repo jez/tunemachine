@@ -12,7 +12,7 @@ app.routes = require './routes/routes'
 app.models = require './models'
 
 app.web.init app.config, () ->
-  app.routes.init app.web.express, () ->
+  app.routes.init app.web.express, app.config, () ->
     app.models.init app.config, () ->
       app.web.express.listen app.config.port
       console.log "Server listening on port #{ app.config.port }"
