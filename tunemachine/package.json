@@ -4,8 +4,8 @@
   "description": "Version control for your spotify tunes.",
   "main": "server.coffee",
   "scripts": {
-    "watchify": "watchify -t coffee-reactify ./public/src/app.cjsx -o public/js/bundle.js -v",
-    "browserify": "browserify -t coffee-reactify ./public/src/app.cjsx | uglifyjs > public/js/bundle.js",
+    "watchify": "watchify -t coffee-reactify --debug ./public/src/app.cjsx -o public/js/bundle.js -v",
+    "browserify": "browserify -t coffee-reactify --debug ./public/src/app.cjsx | uglifyjs > public/js/bundle.js",
     "build": "npm run browserify ",
     "dev": "npm run watchify & nodemon -e coffee"
   },
