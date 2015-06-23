@@ -5,8 +5,9 @@ node_modules
 .*.sw[nop]
 
 # Compiled frontend JS
-public/js/bundle.js
+/public/js/bundle.js
 
 .sass-cache
 
-
+# local mongodb data
+/data
