@@ -9,27 +9,17 @@ PlaylistRestoreButton = React.createClass
       type: 'PUT'
       url: "/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
       data:
-        name: "Revert #{this.props.name}"
+        name: "Revert to '#{this.props.name}'"
       json: true
-      success: () =>
-          $('body').trigger
-            type: 'tm:snapshot'
-            playlist_id: this.props.playlist_id
-            snapshot:
-              key: this.props.key_
-              timestamp: this.props.timestamp
-              count: this.props.count
-              name: this.props.name
-              tracks: this.props.tracks
+      success: (snapshot) =>
+        $('body').trigger
+          type: 'tm:snapshot'
+          playlist_id: this.props.playlist_id
+          snapshot: snapshot
 
-          $('body').trigger
-            type: 'tm:add-snapshot'
-            snapshot:
-              key: this.props.key_
-              timestamp: this.props.timestamp
-              count: this.props.count
-              name: this.props.name
-
+        $('body').trigger
+          type: 'tm:add-snapshot'
+          snapshot: snapshot
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
@@ -83,18 +73,9 @@ Playlist = React.createClass
   componentDidMount: ->
     $('body').on 'tm:snapshot', (e) =>
       $.get "/api/playlist/#{e.playlist_id}/#{e.snapshot.key}", (snapshot) =>
-        tracks = _.map snapshot.tracks, (track) ->
-          key: track.id
-          name: track.name
-          artist: track.artist
-
+        this.setState snapshot
         this.setState
           playlist_id: e.playlist_id
-          key: e.snapshot.key
-          name: snapshot.name
-          timestamp: snapshot.timestamp
-          count: snapshot.count
-          tracks: tracks
 
   render: ->
     tracks = _.map this.state.tracks, (track) ->

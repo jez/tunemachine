@@ -1,6 +1,6 @@
 $ = require 'jquery'
 _ = require 'underscore'
-React = require 'react'
+React = require 'react/addons'
 
 addSnapshot = (playlist_id, newName) ->
   $.ajax
@@ -10,28 +10,14 @@ addSnapshot = (playlist_id, newName) ->
       name: "#{newName}"
     json: true
     success: (snapshot) ->
-      tracks = _.map snapshot.tracks, (track) ->
-        key: track.id
-        name: track.name
-        artist: track.artist
-
       $('body').trigger
         type: 'tm:snapshot'
         playlist_id: playlist_id
-        snapshot:
-          key: snapshot.id
-          name: snapshot.name
-          timestamp: snapshot.timestamp
-          count: snapshot.count
-          tracks: tracks
+        snapshot: snapshot
 
       $('body').trigger
         type: 'tm:add-snapshot'
-        snapshot:
-          key: snapshot.id
-          count: snapshot.count
-          name: snapshot.name
-          timestamp: snapshot.timestamp
+        snapshot: snapshot
 
 SnapshotCopyButton = React.createClass
   handleClick: (e) ->
@@ -47,7 +33,7 @@ SnapshotCopyButton = React.createClass
 SnapshotItem = React.createClass
   render: ->
     className = "tm-snapshot-item"
-    if this.props.selected
+    if this.props.selected == this.props.idx
       className += " active"
 
     <div className={className} onClick={this.props.onClick}>
@@ -59,36 +45,30 @@ SnapshotItem = React.createClass
 SnapshotList = React.createClass
   getInitialState: ->
     playlist:
+      key: -1
       name: 'Party music'
     snapshots: [
         key: 1
         name: 'Too many parties'
         timestamp: '06/20/2015'
         count: 50
-        selected: true
     ]
     selected: 0
 
   handleClick: (idx) ->
-    newSnapshots = this.state.snapshots
-    newSnapshots[this.state.selected]['selected'] = false
-    newSnapshots[idx]['selected'] = true
-
     this.setState
       selected: idx
-      snapshots: newSnapshots
 
     $('body').trigger
       type: 'tm:snapshot'
       playlist_id: this.state.playlist.key
-      snapshot: newSnapshots[idx]
+      snapshot: this.state.snapshots[idx]
 
   componentDidMount: ->
     $('body').on 'tm:playlist', (e) =>
-      selected = -1
+      selected = null
       if e.playlist.snapshots[0]?
         selected = e.playlist.snapshots.length - 1
-        e.playlist.snapshots[selected]['selected'] = true
 
       this.setState
         playlist:
@@ -97,7 +77,7 @@ SnapshotList = React.createClass
         snapshots: e.playlist.snapshots
         selected: selected
 
-      if selected >= 0
+      if selected != null
         $('body').trigger
           type: 'tm:snapshot'
           playlist_id: e.playlist.key
@@ -107,20 +87,14 @@ SnapshotList = React.createClass
 
 
     $('body').on 'tm:add-snapshot', (e) =>
-      newSnapshots = this.state.snapshots
-      newSnapshots.push
-        selected: true
-        key: e.snapshot.key
-        name: e.snapshot.name
-        timestamp: e.snapshot.name
-        count: e.snapshot.count
-        tracks: e.snapshot.tracks
+      oldLen = this.state.snapshots.length
+      newState = React.addons.update this.state,
+        snapshots:
+          $push: [e.snapshot]
 
-      if this.state.selected >= 0
-        newSnapshots[this.state.selected]['selected'] = false
+      this.setState newState
       this.setState
-        snapshots: newSnapshots
-        selected: 0
+        selected: oldLen       # oldLen is final idx after pushing one
 
       $('body').trigger
         type: 'tm:snapshot'
@@ -130,7 +104,8 @@ SnapshotList = React.createClass
 
   render: ->
     snapshotItems =  _.map this.state.snapshots, (snapshot, idx) =>
-      <SnapshotItem {...snapshot} onClick={this.handleClick.bind(this, idx)}/>
+      <SnapshotItem {...snapshot} idx={idx} selected={this.state.selected}
+          onClick={this.handleClick.bind(this, idx)} />
 
     snapshotItems.reverse()
 

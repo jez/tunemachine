@@ -7,7 +7,9 @@ requireLoggedIn = (req, res, next) ->
   if req.session.access_token? and Date.now() < req.session.expiration
     next()
   else
-    res.redirect '/auth/login'
+    res.status(401).json
+      error: "logged_out"
+      message: "You are not logged in, or your session has expired."
 
 module.exports = (app, models, spotify) ->
 
@@ -31,18 +33,16 @@ module.exports = (app, models, spotify) ->
               return models.err res, err
 
             playlists = playlists.playlists.map (p) ->
-              p.snapshots = snapshots
+              key: p.id
+              name: p.name
+              snapshots: snapshots
                 .filter (s) -> s.Playlist == p.id
                 .map (s) ->
-                  val = {}
-                  val.timestamp = s.Timestamp
-                  val.id = s.id
-                  val.count = s.Tracks.length
-                  val.name = s.Name
-                  return val
-                .sort (a, b) ->
-                  return a.Timestamp - b.Timestamp
-              return p
+                  timestamp: s.Timestamp
+                  key: s.id
+                  count: s.Tracks.length
+                  name: s.Name
+                .sort (a, b) -> a.Timestamp - b.Timestamp
 
             res.json
               user_id: me.id
@@ -56,16 +56,19 @@ module.exports = (app, models, spotify) ->
         if err?
           return models.err res, err
         if snap?
-          val = {}
-          val.id = snap.id
-          val.name = snap.Name
-          val.timestamp = snap.Timestamp
-          val.count = snap.Tracks.length
-          val.tracks = snap.Tracks
-          res.json val
+          tracks = snap.Tracks.map (track) ->
+            key: track.id
+            artist: track.artist
+            name: track.name
+
+          res.json
+            key: snap.id
+            name: snap.Name
+            timestamp: snap.Timestamp
+            count: snap.Tracks.length
+            tracks: tracks
         else
-          res.status = 404
-          res.end()
+          res.status(404).end()
 
   # GET /api/playlist/:playlistId/:snapId
   app.get '/api/playlist/:playlistId/:snapId', requireLoggedIn, get
