@@ -1,6 +1,6 @@
 $ = require 'jquery'
 _ = require 'underscore'
-React = require 'react'
+React = require 'react/addons'
 
 User = React.createClass
   render: ->
@@ -58,7 +58,7 @@ PlaylistList = React.createClass
           type: 'tm:playlist'
           playlist: data.playlists[selected]
 
-      null
+    # TODO: listen to add-snapshot event
 
   render: ->
     playlistItems = _.map this.state.playlists, (playlist, idx) =>
