@@ -14,10 +14,11 @@ html {
   background-size: cover;
 }
 
-body {
+.outer-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
 .content-wrapper {
@@ -47,4 +48,11 @@ body {
   border-radius: 20px;
   border-bottom: 3px solid $tm-button-underline;
   text-decoration: none;
+}
+
+.github-link {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -16px;
 }

@@ -67,13 +67,14 @@ html {
 }
 
 /* line 17, ../sass/login.scss */
-body {
+.outer-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
-/* line 23, ../sass/login.scss */
+/* line 24, ../sass/login.scss */
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -82,17 +83,17 @@ body {
   height: 35%;
 }
 
-/* line 32, ../sass/login.scss */
+/* line 33, ../sass/login.scss */
 .banner-logo {
   height: 120px;
 }
 
-/* line 36, ../sass/login.scss */
+/* line 37, ../sass/login.scss */
 .tagline {
   font-size: 20px;
 }
 
-/* line 40, ../sass/login.scss */
+/* line 41, ../sass/login.scss */
 .auth-button {
   display: inline-block;
   padding: 15px 50px;
@@ -101,4 +102,12 @@ body {
   border-radius: 20px;
   border-bottom: 3px solid rgba(0, 0, 0, 0.15);
   text-decoration: none;
+}
+
+/* line 53, ../sass/login.scss */
+.github-link {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -16px;
 }
