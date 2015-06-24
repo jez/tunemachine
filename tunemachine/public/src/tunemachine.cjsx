@@ -9,17 +9,14 @@ TMHeader = React.createClass
     display_name: 'Welcome'
 
   componentDidMount: ->
-    $('body').on 'tm:user', (e) =>
-      this.setState
-        user_id: e.user_id
-        display_name: e.display_name
+    $('body').on 'tm:user', (e) => this.setState e
 
   render: ->
     <header>
       <div className="tm-header-container">
         <img className="tm-brand-logo" src="/img/logo.png" />
         <div className="tm-user-header">
-          <img src="/img/user.png" />
+          <img src={this.state.image || "/img/user.png"} />
           <span className="tm-user-name">
             {this.state.display_name || this.state.user_id}
           </span>
