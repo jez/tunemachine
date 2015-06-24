@@ -1,0 +1,50 @@
+@import 'reset';
+@import 'variables';
+
+html, body {
+  font-family: $tm-font-family;
+  height: 100%;
+
+  color: $tm-white;
+  font-size: 20px;
+}
+
+html {
+  background: url('/img/background.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 35%;
+}
+
+.banner-logo {
+  height: 120px;
+}
+
+.tagline {
+  font-size: 20px;
+}
+
+.auth-button {
+  display: inline-block;
+
+  padding: 15px 50px;
+
+  color: $tm-white;
+  background-color: $tm-yellow;
+  border-radius: 20px;
+  border-bottom: 3px solid $tm-button-underline;
+  text-decoration: none;
+}

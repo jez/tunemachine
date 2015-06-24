@@ -37,6 +37,12 @@ web.init = (config, next) ->
       secure: false
     store: mongoStore
 
+  # Utility function for checking whether we're logged in
+  web.express.use (req, res, next) ->
+    req.isLoggedIn = ->
+      this.session.access_token? and Date.now() < this.session.expiration
+    next()
+
   # logging
   web.express.use morgan 'dev'
 

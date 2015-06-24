@@ -4,7 +4,7 @@
 # @since 20 Jun 2015
 
 requireLoggedIn = (req, res, next) ->
-  if req.session.access_token? and Date.now() < req.session.expiration
+  if req.isLoggedIn()
     next()
   else
     res.status(401).json

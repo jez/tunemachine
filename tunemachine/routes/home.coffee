@@ -7,6 +7,7 @@ module.exports = (app) ->
 
   # GET /login
   app.get '/', (req, res) ->
-    res.render 'app',
-      title: 'TuneMachine'
-    res.end()
+    if req.isLoggedIn()
+      res.render 'app'
+    else
+      res.render 'login'
