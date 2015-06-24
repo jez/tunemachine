@@ -1,30 +1,26 @@
-@import 'compass/reset';
+@import 'reset';
+@import 'variables';
 
-$tm-background: #f0f0f0;
-
-$tm-yellow: #f1cf30;
-$tm-white: white;
-$tm-grey-dark: #333;
-$tm-grey-light: #9b9b9b;
-
-$tm-title-large: 16px;
-$tm-title-small: 14px;
-
-$tm-text-large: 13px;
-$tm-text-normal: 12px;
-$tm-text-small: 11px;
-
-$tm-button-underline: rgba(0, 0, 0, 0.15);
-
-$tm-playlist-list-width: 300px;
-$tm-snapshot-list-width: 420px;
-$tm-playlist-width: 370px;
+// Newlines are significant. All properties are sorted as follows:
+//
+//   .selector {
+//     <layout styles>
+//
+//     <sizing styles>
+//
+//     <design styles>
+//   }
+//
+// When one of these categories is absent, the newlines are combined. Within a
+// category, we try to sort alphabetically unless a more logical order exists.
+//
+// Then again, most of these styles were written during a Hackathon. YMMV.
 
 html, body {
-  font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
+  font-family: $tm-font-family;
   font-size: 100%;
 
-  color: #333;
+  color: $tm-grey-dark;
   background-color: $tm-yellow;
 }
 

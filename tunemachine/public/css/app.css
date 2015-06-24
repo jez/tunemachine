@@ -1,18 +1,6 @@
 @charset "UTF-8";
-/* line 5, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+/* line 2, ../sass/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -21,50 +9,51 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+
+/* line 2, ../sass/_reset.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../.virtualenvs/a16z/gems/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 2, ../sass/_reset.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
-/* line 23, ../sass/style.scss */
+/* line 19, ../sass/app.scss */
 html, body {
   font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
   font-size: 100%;
@@ -72,13 +61,13 @@ html, body {
   background-color: #f1cf30;
 }
 
-/* line 33, ../sass/style.scss */
+/* line 29, ../sass/app.scss */
 header {
   height: 60px;
   background: #f1cf30;
 }
 
-/* line 39, ../sass/style.scss */
+/* line 35, ../sass/app.scss */
 .tm-header-container {
   display: flex;
   justify-content: space-between;
@@ -88,31 +77,31 @@ header {
   height: 100%;
 }
 
-/* line 48, ../sass/style.scss */
+/* line 44, ../sass/app.scss */
 .tm-brand-logo {
   height: 39px;
 }
 
-/* line 52, ../sass/style.scss */
+/* line 48, ../sass/app.scss */
 .tm-user-header {
   display: flex;
   align-items: center;
 }
-/* line 56, ../sass/style.scss */
+/* line 52, ../sass/app.scss */
 .tm-user-header img {
   height: 30px;
   display: inline-block;
   margin-right: 15px;
 }
 
-/* line 63, ../sass/style.scss */
+/* line 59, ../sass/app.scss */
 .tm-wrapper {
   display: flex;
   height: 100vh;
   flex-direction: column;
 }
 
-/* line 71, ../sass/style.scss */
+/* line 67, ../sass/app.scss */
 .tm-main {
   display: flex;
   flex: 1;
@@ -120,13 +109,13 @@ header {
   align-items: stretch;
 }
 
-/* line 78, ../sass/style.scss */
+/* line 74, ../sass/app.scss */
 h1 {
   font-size: 16px;
   margin-bottom: 20px;
 }
 
-/* line 83, ../sass/style.scss */
+/* line 79, ../sass/app.scss */
 p {
   margin-bottom: 20px;
   color: #9b9b9b;
@@ -134,7 +123,7 @@ p {
   line-height: 1.4;
 }
 
-/* line 93, ../sass/style.scss */
+/* line 89, ../sass/app.scss */
 .tm-playlist-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -142,19 +131,19 @@ p {
   color: white;
   background: #333;
 }
-/* line 102, ../sass/style.scss */
+/* line 98, ../sass/app.scss */
 .tm-playlist-list h1 {
   margin: 20px 25px;
   font-size: 16px;
 }
 
-/* line 108, ../sass/style.scss */
+/* line 104, ../sass/app.scss */
 .tm-user {
   display: flex;
   justify-content: center;
   height: 150px;
 }
-/* line 114, ../sass/style.scss */
+/* line 110, ../sass/app.scss */
 .tm-user img {
   align-self: center;
   height: 55px;
@@ -162,7 +151,7 @@ p {
   border-radius: 28px;
 }
 
-/* line 124, ../sass/style.scss */
+/* line 120, ../sass/app.scss */
 .tm-playlist-item {
   padding: 10px;
   padding-left: 20px;
@@ -172,13 +161,13 @@ p {
   cursor: pointer;
   font-size: 14px;
 }
-/* line 134, ../sass/style.scss */
+/* line 130, ../sass/app.scss */
 .tm-playlist-item.active {
   color: white;
   border-right: 5px solid #f1cf30;
 }
 
-/* line 142, ../sass/style.scss */
+/* line 138, ../sass/app.scss */
 .tm-snapshot-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -187,7 +176,7 @@ p {
   background-color: #f0f0f0;
 }
 
-/* line 153, ../sass/style.scss */
+/* line 149, ../sass/app.scss */
 .tm-button {
   display: block;
   float: right;
@@ -203,7 +192,7 @@ p {
   text-decoration: none;
 }
 
-/* line 170, ../sass/style.scss */
+/* line 166, ../sass/app.scss */
 .tm-snapshot-item {
   position: relative;
   margin-left: 20px;
@@ -215,11 +204,11 @@ p {
   border-bottom-left-radius: 5px;
   cursor: pointer;
 }
-/* line 183, ../sass/style.scss */
+/* line 179, ../sass/app.scss */
 .tm-snapshot-item.active, .tm-snapshot-item:hover {
   border-right: 5px solid #f1cf30;
 }
-/* line 189, ../sass/style.scss */
+/* line 185, ../sass/app.scss */
 .tm-snapshot-item:before {
   content: ' ';
   width: 18px;
@@ -231,7 +220,7 @@ p {
   display: inline-block;
   box-sizing: border-box;
 }
-/* line 200, ../sass/style.scss */
+/* line 196, ../sass/app.scss */
 .tm-snapshot-item:not(:last-child):after {
   content: '• • • • •';
   width: 7px;
@@ -245,20 +234,20 @@ p {
   line-height: 0.88;
 }
 
-/* line 214, ../sass/style.scss */
+/* line 210, ../sass/app.scss */
 .tm-snapshot-item-title {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* line 220, ../sass/style.scss */
+/* line 216, ../sass/app.scss */
 .tm-snapshot-item-info {
   line-height: 1.5;
   color: #9b9b9b;
   font-size: 12px;
 }
 
-/* line 229, ../sass/style.scss */
+/* line 225, ../sass/app.scss */
 .tm-playlist {
   overflow-y: scroll;
   padding: 35px;
@@ -267,17 +256,17 @@ p {
   background-color: white;
 }
 
-/* line 239, ../sass/style.scss */
+/* line 235, ../sass/app.scss */
 .tm-songs-table {
   margin: 30px -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 }
-/* line 244, ../sass/style.scss */
+/* line 240, ../sass/app.scss */
 .tm-songs-table th {
   font-size: 16px;
 }
-/* line 247, ../sass/style.scss */
+/* line 243, ../sass/app.scss */
 .tm-songs-table td {
   max-width: 200px;
   padding: 13px 0;

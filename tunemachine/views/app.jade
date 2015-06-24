@@ -1,6 +1,12 @@
 extends layout
 
+block head
+  link(rel="stylesheet", href="/css/app.css")
+
 block content
   //- TODO: Add styles to noscript tag
   noscript TuneMachine makes heavy use of JavaScript.
   #tm-target
+
+block scripts
+  script(src='/js/bundle.js')

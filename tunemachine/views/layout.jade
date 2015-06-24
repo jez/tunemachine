@@ -1,8 +1,7 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/css/style.css')
+    title TuneMachine
 
     meta(charset="utf-8")
     // TODO: Mobile responsive
@@ -16,10 +15,10 @@ html
     //link(rel="icon", href="/favicon.png")
 
     link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Open+Sans")
-    link(rel="stylesheet", href="/css/style.css")
+    block head
 
     // TODO: Canonical URLs
     //link(rel="canonical", href="https://jez.io/")
   body
     block content
-    script(src='/js/bundle.js')
+    block scripts
