@@ -50,9 +50,12 @@ header {
   align-items: center;
 
   img {
-    height: 30px;
     display: inline-block;
     margin-right: 15px;
+
+    height: 30px;
+
+    border-radius: 15px;
   }
 }
 
