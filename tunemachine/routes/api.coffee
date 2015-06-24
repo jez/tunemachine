@@ -47,6 +47,7 @@ module.exports = (app, models, spotify) ->
             res.json
               user_id: me.id
               display_name: me.display_name
+              image: if me.image? then me.image else '/img/user.png'
               playlists: playlists
 
   get = (req, res) ->

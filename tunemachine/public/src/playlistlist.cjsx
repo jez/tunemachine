@@ -3,10 +3,18 @@ _ = require 'underscore'
 React = require 'react/addons'
 
 User = React.createClass
+  getInitialState: ->
+    image: '/img/user.png'
+
+  componentDidMount: ->
+    $('body').on 'tm:user', (e) =>
+      this.setState
+        image: e.image
+
   render: ->
     <div className="tm-user">
       <img className="tm-user-avatar"
-          src="/img/user.png" />
+          src={this.state.image} />
     </div>
 
 PlaylistItem = React.createClass
@@ -52,6 +60,7 @@ PlaylistList = React.createClass
         type: 'tm:user'
         user_id: data.user_id
         display_name: data.display_name
+        image: data.image
 
       if selected != null
         $('body').trigger

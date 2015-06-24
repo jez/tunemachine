@@ -20,6 +20,9 @@ spotify.getMe = (oAuthToken, next) ->
       values = {}
       values.id = body.id
       values.display_name = body.display_name
+
+      if body.images.length > 0
+        values.image = body.images[0].url
       next(null, values)
 
 # @brief Retrieve a list of playlist ids owned by the user.  Will paginate
