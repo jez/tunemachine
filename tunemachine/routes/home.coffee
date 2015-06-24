@@ -7,6 +7,6 @@ module.exports = (app) ->
 
   # GET /login
   app.get '/', (req, res) ->
-    res.render 'index',
+    res.render 'app',
       title: 'TuneMachine'
     res.end()
