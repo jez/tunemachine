@@ -45,9 +45,7 @@ module.exports = (app, models, spotify) ->
                 .sort (a, b) -> a.Timestamp - b.Timestamp
 
             res.json
-              user_id: me.id
-              display_name: me.display_name
-              image: if me.image? then me.image else null
+              user: me
               playlists: playlists
 
   get = (req, res) ->
