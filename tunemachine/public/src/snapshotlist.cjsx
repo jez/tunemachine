@@ -1,5 +1,6 @@
 $ = require 'jquery'
 _ = require 'underscore'
+Modal = require './modal.cjsx'
 React = require 'react/addons'
 
 addSnapshot = (playlist_id, newName) ->
@@ -22,7 +23,14 @@ addSnapshot = (playlist_id, newName) ->
 SnapshotCopyButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    addSnapshot(this.props.playlist.key, "Snap of #{this.props.playlist.name}")
+
+    callback = (cancelled, name) =>
+      React.unmountComponentAtNode $('#tm-modal-target')[0]
+      if not cancelled
+        addSnapshot(this.props.playlist.key, name)
+
+    React.render <Modal initialValue="Snap of #{this.props.playlist.name}"
+        callback={callback}/>, $('#tm-modal-target')[0]
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist.key}" className="tm-button"

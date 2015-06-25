@@ -4,7 +4,6 @@ React = require 'react/addons'
 
 User = React.createClass
   render: ->
-    console.log this.props
     <div className="tm-user">
       <img className="tm-user-avatar"
           src={this.props.image || '/img/user.png'} />

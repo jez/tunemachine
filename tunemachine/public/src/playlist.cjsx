@@ -1,25 +1,34 @@
 $ = require 'jquery'
 _ = require 'underscore'
+Modal = require './modal.cjsx'
 React = require 'react'
 
 PlaylistRestoreButton = React.createClass
   handleClick: (e) ->
     e.preventDefault()
-    $.ajax
-      type: 'PUT'
-      url: "/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
-      data:
-        name: "Revert to '#{this.props.name}'"
-      json: true
-      success: (snapshot) =>
-        $('body').trigger
-          type: 'tm:snapshot'
-          playlist_id: this.props.playlist_id
-          snapshot: snapshot
 
-        $('body').trigger
-          type: 'tm:add-snapshot'
-          snapshot: snapshot
+    callback = (cancelled, name) =>
+      React.unmountComponentAtNode $('#tm-modal-target')[0]
+      if not cancelled
+        $.ajax
+          type: 'PUT'
+          url: "/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
+          data:
+            name: name
+          json: true
+          success: (snapshot) =>
+            $('body').trigger
+              type: 'tm:snapshot'
+              playlist_id: this.props.playlist_id
+              snapshot: snapshot
+
+            $('body').trigger
+              type: 'tm:add-snapshot'
+              snapshot: snapshot
+
+    React.render <Modal initialValue="Revert to '#{this.props.name}'"
+        callback={callback}/>, $('#tm-modal-target')[0]
+
 
   render: ->
     <a href="/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"

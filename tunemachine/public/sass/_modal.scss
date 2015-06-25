@@ -1,0 +1,89 @@
+@import 'variables';
+
+.tm-modal-canvas {
+  display: none;
+
+  &.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.3);
+    cursor: pointer;
+  }
+}
+
+.tm-modal {
+  margin-bottom: 10%;
+
+  padding: 40px 30px;
+  box-sizing: border-box;
+  width: 440px;
+
+  background-color: $tm-background;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px $tm-grey-light;
+
+  cursor: auto;
+
+  h1 {
+    margin-bottom: 30px;
+
+    color: $tm-grey-dark;
+  }
+}
+
+.tm-modal-form {
+  display: flex;
+  width: 100%;
+}
+
+.tm-modal-input,
+.tm-modal-button {
+  // Browser overrides
+  outline: none;
+  -webkit-appearance: none;
+
+  border: none;
+  padding: 0 15px;
+
+  height: 40px;
+
+}
+
+.tm-modal-input {
+  // Browser overrides
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
+
+  flex: 1;
+
+  color: $tm-grey-dark;
+  background-color: $tm-white;
+  font-size: $tm-text-large;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.tm-modal-button {
+  background-color: $tm-yellow;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: 2px solid $tm-yellow;
+  color: $tm-white;
+  font-size: $tm-text-large;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid $tm-button-underline;
+  }
+  &:active {
+    border-bottom: 2px solid $tm-yellow;
+  }
+}

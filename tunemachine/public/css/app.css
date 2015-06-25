@@ -53,7 +53,90 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 19, ../sass/app.scss */
+/* line 3, ../sass/_modal.scss */
+.tm-modal-canvas {
+  display: none;
+}
+/* line 6, ../sass/_modal.scss */
+.tm-modal-canvas.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* line 21, ../sass/_modal.scss */
+.tm-modal {
+  margin-bottom: 10%;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  width: 440px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #9b9b9b;
+  cursor: auto;
+}
+/* line 34, ../sass/_modal.scss */
+.tm-modal h1 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* line 41, ../sass/_modal.scss */
+.tm-modal-form {
+  display: flex;
+  width: 100%;
+}
+
+/* line 46, ../sass/_modal.scss */
+.tm-modal-input,
+.tm-modal-button {
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0 15px;
+  height: 40px;
+}
+
+/* line 59, ../sass/_modal.scss */
+.tm-modal-input {
+  outline: none;
+  -webkit-appearance: none;
+  border: none;
+  flex: 1;
+  color: #333;
+  background-color: white;
+  font-size: 13px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* line 74, ../sass/_modal.scss */
+.tm-modal-button {
+  background-color: #f1cf30;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: 2px solid #f1cf30;
+  color: white;
+  font-size: 13px;
+}
+/* line 82, ../sass/_modal.scss */
+.tm-modal-button:hover {
+  cursor: pointer;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+}
+/* line 86, ../sass/_modal.scss */
+.tm-modal-button:active {
+  border-bottom: 2px solid #f1cf30;
+}
+
+/* line 21, ../sass/app.scss */
 html, body {
   font-family: "Open Sans", "Lucida Grande", Arial, sans-serif;
   font-size: 100%;
@@ -61,13 +144,13 @@ html, body {
   background-color: #f1cf30;
 }
 
-/* line 29, ../sass/app.scss */
+/* line 31, ../sass/app.scss */
 header {
   height: 60px;
   background: #f1cf30;
 }
 
-/* line 35, ../sass/app.scss */
+/* line 37, ../sass/app.scss */
 .tm-header-container {
   display: flex;
   justify-content: space-between;
@@ -77,25 +160,25 @@ header {
   height: 100%;
 }
 
-/* line 44, ../sass/app.scss */
+/* line 46, ../sass/app.scss */
 .tm-brand-logo {
   height: 39px;
 }
 
-/* line 48, ../sass/app.scss */
+/* line 50, ../sass/app.scss */
 .tm-sign-out {
   color: white;
   text-decoration: none;
 }
 
-/* line 53, ../sass/app.scss */
+/* line 55, ../sass/app.scss */
 .tm-wrapper {
   display: flex;
   height: 100vh;
   flex-direction: column;
 }
 
-/* line 61, ../sass/app.scss */
+/* line 63, ../sass/app.scss */
 .tm-main {
   display: flex;
   flex: 1;
@@ -103,13 +186,13 @@ header {
   align-items: stretch;
 }
 
-/* line 68, ../sass/app.scss */
+/* line 70, ../sass/app.scss */
 h1 {
   font-size: 16px;
   margin-bottom: 20px;
 }
 
-/* line 73, ../sass/app.scss */
+/* line 75, ../sass/app.scss */
 p {
   margin-bottom: 20px;
   color: #9b9b9b;
@@ -117,7 +200,7 @@ p {
   line-height: 1.4;
 }
 
-/* line 83, ../sass/app.scss */
+/* line 85, ../sass/app.scss */
 .tm-playlist-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -125,13 +208,13 @@ p {
   color: white;
   background: #333;
 }
-/* line 92, ../sass/app.scss */
+/* line 94, ../sass/app.scss */
 .tm-playlist-list h1 {
   margin: 20px 25px;
   font-size: 16px;
 }
 
-/* line 98, ../sass/app.scss */
+/* line 100, ../sass/app.scss */
 .tm-user {
   display: flex;
   flex-direction: column;
@@ -139,18 +222,18 @@ p {
   align-items: center;
   height: 150px;
 }
-/* line 106, ../sass/app.scss */
+/* line 108, ../sass/app.scss */
 .tm-user img {
   height: 55px;
   width: 55px;
   border-radius: 28px;
 }
-/* line 113, ../sass/app.scss */
+/* line 115, ../sass/app.scss */
 .tm-user .tm-user-name {
   margin-top: 20px;
 }
 
-/* line 118, ../sass/app.scss */
+/* line 120, ../sass/app.scss */
 .tm-playlist-item {
   padding: 10px;
   padding-left: 20px;
@@ -160,13 +243,13 @@ p {
   cursor: pointer;
   font-size: 14px;
 }
-/* line 128, ../sass/app.scss */
+/* line 130, ../sass/app.scss */
 .tm-playlist-item.active, .tm-playlist-item:hover {
   color: white;
   border-right: 5px solid #f1cf30;
 }
 
-/* line 137, ../sass/app.scss */
+/* line 139, ../sass/app.scss */
 .tm-snapshot-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -175,7 +258,7 @@ p {
   background-color: #f0f0f0;
 }
 
-/* line 148, ../sass/app.scss */
+/* line 150, ../sass/app.scss */
 .tm-button {
   display: block;
   float: right;
@@ -191,7 +274,7 @@ p {
   text-decoration: none;
 }
 
-/* line 165, ../sass/app.scss */
+/* line 167, ../sass/app.scss */
 .tm-snapshot-item {
   position: relative;
   margin-left: 20px;
@@ -203,11 +286,11 @@ p {
   border-bottom-left-radius: 5px;
   cursor: pointer;
 }
-/* line 178, ../sass/app.scss */
+/* line 180, ../sass/app.scss */
 .tm-snapshot-item.active, .tm-snapshot-item:hover {
   border-right: 5px solid #f1cf30;
 }
-/* line 184, ../sass/app.scss */
+/* line 186, ../sass/app.scss */
 .tm-snapshot-item:before {
   content: ' ';
   width: 18px;
@@ -219,7 +302,7 @@ p {
   display: inline-block;
   box-sizing: border-box;
 }
-/* line 195, ../sass/app.scss */
+/* line 197, ../sass/app.scss */
 .tm-snapshot-item:not(:last-child):after {
   content: '• • • • •';
   width: 7px;
@@ -233,20 +316,20 @@ p {
   line-height: 0.88;
 }
 
-/* line 209, ../sass/app.scss */
+/* line 211, ../sass/app.scss */
 .tm-snapshot-item-title {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* line 215, ../sass/app.scss */
+/* line 217, ../sass/app.scss */
 .tm-snapshot-item-info {
   line-height: 1.5;
   color: #9b9b9b;
   font-size: 12px;
 }
 
-/* line 224, ../sass/app.scss */
+/* line 226, ../sass/app.scss */
 .tm-playlist {
   overflow-y: scroll;
   padding: 35px;
@@ -255,17 +338,17 @@ p {
   background-color: white;
 }
 
-/* line 234, ../sass/app.scss */
+/* line 236, ../sass/app.scss */
 .tm-songs-table {
   margin: 30px -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 }
-/* line 239, ../sass/app.scss */
+/* line 241, ../sass/app.scss */
 .tm-songs-table th {
   font-size: 16px;
 }
-/* line 242, ../sass/app.scss */
+/* line 244, ../sass/app.scss */
 .tm-songs-table td {
   max-width: 200px;
   padding: 13px 0;
