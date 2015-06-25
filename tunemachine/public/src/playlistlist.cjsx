@@ -4,10 +4,15 @@ React = require 'react/addons'
 
 User = React.createClass
   render: ->
+    console.log this.props
     <div className="tm-user">
       <img className="tm-user-avatar"
           src={this.props.image || '/img/user.png'} />
+      <div className="tm-user-name">
+        {this.props.display_name || this.props.id}
+      </div>
     </div>
+
 
 PlaylistItem = React.createClass
   render: ->
@@ -22,6 +27,10 @@ PlaylistItem = React.createClass
 
 PlaylistList = React.createClass
   getInitialState: ->
+    user:
+      id: ''
+      display_name: 'Welcome'
+      image: ''
     playlists: [
         key: -1
         name: 'Loading playlists...'
@@ -48,12 +57,6 @@ PlaylistList = React.createClass
       this.setState
         selected: selected
 
-      $('body').trigger
-        type: 'tm:user'
-        user_id: data.user_id
-        display_name: data.display_name
-        image: data.image
-
       if selected != null
         $('body').trigger
           type: 'tm:playlist'
@@ -67,7 +70,7 @@ PlaylistList = React.createClass
           onClick={this.handleClick.bind(this, idx)} />
 
     <div className="tm-playlist-list">
-      <User image={this.state.image} />
+      <User {...this.state.user} />
       <h1>Playlists</h1>
       {playlistItems}
     </div>

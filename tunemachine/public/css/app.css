@@ -83,26 +83,19 @@ header {
 }
 
 /* line 48, ../sass/app.scss */
-.tm-user-header {
-  display: flex;
-  align-items: center;
-}
-/* line 52, ../sass/app.scss */
-.tm-user-header img {
-  display: inline-block;
-  margin-right: 15px;
-  height: 30px;
-  border-radius: 15px;
+.tm-sign-out {
+  color: white;
+  text-decoration: none;
 }
 
-/* line 62, ../sass/app.scss */
+/* line 53, ../sass/app.scss */
 .tm-wrapper {
   display: flex;
   height: 100vh;
   flex-direction: column;
 }
 
-/* line 70, ../sass/app.scss */
+/* line 61, ../sass/app.scss */
 .tm-main {
   display: flex;
   flex: 1;
@@ -110,13 +103,13 @@ header {
   align-items: stretch;
 }
 
-/* line 77, ../sass/app.scss */
+/* line 68, ../sass/app.scss */
 h1 {
   font-size: 16px;
   margin-bottom: 20px;
 }
 
-/* line 82, ../sass/app.scss */
+/* line 73, ../sass/app.scss */
 p {
   margin-bottom: 20px;
   color: #9b9b9b;
@@ -124,7 +117,7 @@ p {
   line-height: 1.4;
 }
 
-/* line 92, ../sass/app.scss */
+/* line 83, ../sass/app.scss */
 .tm-playlist-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -132,27 +125,32 @@ p {
   color: white;
   background: #333;
 }
-/* line 101, ../sass/app.scss */
+/* line 92, ../sass/app.scss */
 .tm-playlist-list h1 {
   margin: 20px 25px;
   font-size: 16px;
 }
 
-/* line 107, ../sass/app.scss */
+/* line 98, ../sass/app.scss */
 .tm-user {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 150px;
 }
-/* line 113, ../sass/app.scss */
+/* line 106, ../sass/app.scss */
 .tm-user img {
-  align-self: center;
   height: 55px;
   width: 55px;
   border-radius: 28px;
 }
+/* line 113, ../sass/app.scss */
+.tm-user .tm-user-name {
+  margin-top: 20px;
+}
 
-/* line 123, ../sass/app.scss */
+/* line 118, ../sass/app.scss */
 .tm-playlist-item {
   padding: 10px;
   padding-left: 20px;
@@ -162,13 +160,13 @@ p {
   cursor: pointer;
   font-size: 14px;
 }
-/* line 133, ../sass/app.scss */
-.tm-playlist-item.active {
+/* line 128, ../sass/app.scss */
+.tm-playlist-item.active, .tm-playlist-item:hover {
   color: white;
   border-right: 5px solid #f1cf30;
 }
 
-/* line 141, ../sass/app.scss */
+/* line 137, ../sass/app.scss */
 .tm-snapshot-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -177,7 +175,7 @@ p {
   background-color: #f0f0f0;
 }
 
-/* line 152, ../sass/app.scss */
+/* line 148, ../sass/app.scss */
 .tm-button {
   display: block;
   float: right;
@@ -193,7 +191,7 @@ p {
   text-decoration: none;
 }
 
-/* line 169, ../sass/app.scss */
+/* line 165, ../sass/app.scss */
 .tm-snapshot-item {
   position: relative;
   margin-left: 20px;
@@ -205,11 +203,11 @@ p {
   border-bottom-left-radius: 5px;
   cursor: pointer;
 }
-/* line 182, ../sass/app.scss */
+/* line 178, ../sass/app.scss */
 .tm-snapshot-item.active, .tm-snapshot-item:hover {
   border-right: 5px solid #f1cf30;
 }
-/* line 188, ../sass/app.scss */
+/* line 184, ../sass/app.scss */
 .tm-snapshot-item:before {
   content: ' ';
   width: 18px;
@@ -221,7 +219,7 @@ p {
   display: inline-block;
   box-sizing: border-box;
 }
-/* line 199, ../sass/app.scss */
+/* line 195, ../sass/app.scss */
 .tm-snapshot-item:not(:last-child):after {
   content: '• • • • •';
   width: 7px;
@@ -235,20 +233,20 @@ p {
   line-height: 0.88;
 }
 
-/* line 213, ../sass/app.scss */
+/* line 209, ../sass/app.scss */
 .tm-snapshot-item-title {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* line 219, ../sass/app.scss */
+/* line 215, ../sass/app.scss */
 .tm-snapshot-item-info {
   line-height: 1.5;
   color: #9b9b9b;
   font-size: 12px;
 }
 
-/* line 228, ../sass/app.scss */
+/* line 224, ../sass/app.scss */
 .tm-playlist {
   overflow-y: scroll;
   padding: 35px;
@@ -257,17 +255,17 @@ p {
   background-color: white;
 }
 
-/* line 238, ../sass/app.scss */
+/* line 234, ../sass/app.scss */
 .tm-songs-table {
   margin: 30px -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 }
-/* line 243, ../sass/app.scss */
+/* line 239, ../sass/app.scss */
 .tm-songs-table th {
   font-size: 16px;
 }
-/* line 246, ../sass/app.scss */
+/* line 242, ../sass/app.scss */
 .tm-songs-table td {
   max-width: 200px;
   padding: 13px 0;

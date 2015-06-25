@@ -45,18 +45,9 @@ header {
   height: 39px;
 }
 
-.tm-user-header {
-  display: flex;
-  align-items: center;
-
-  img {
-    display: inline-block;
-    margin-right: 15px;
-
-    height: 30px;
-
-    border-radius: 15px;
-  }
+.tm-sign-out {
+  color: white;
+  text-decoration: none;
 }
 
 .tm-wrapper {
@@ -106,17 +97,21 @@ p {
 
 .tm-user {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   height: 150px;
 
   img {
-    align-self: center;
-
     height: 55px;
     width: 55px;
 
     border-radius: 28px;
+  }
+
+  .tm-user-name {
+    margin-top: 20px;
   }
 }
 
@@ -130,7 +125,8 @@ p {
   cursor: pointer;
   font-size: $tm-title-small;
 
-  &.active {
+  &.active,
+  &:hover {
     color: $tm-white;
     border-right: 5px solid $tm-yellow;
   }
