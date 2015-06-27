@@ -26,19 +26,28 @@ html {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
-  height: 35%;
+  max-width: 500px;
+  flex-shrink: 1;
+  padding: 15px;
 }
 
 .banner-logo {
-  height: 120px;
+  max-width: 90%;
 }
 
-.tagline {
+
+.banner-logo,
+.tagline,
+.description {
   font-size: 20px;
+  margin: 10px 0;
+  text-align: justify;
+  line-height: 1.2;
 }
+
 
 .auth-button {
+  margin: 10px 0;
   display: inline-block;
 
   padding: 15px 50px;

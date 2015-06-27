@@ -144,13 +144,30 @@ html, body {
   background-color: #f1cf30;
 }
 
-/* line 31, ../sass/app.scss */
+/* line 29, ../sass/app.scss */
+.noscript {
+  text-align: center;
+  color: #333;
+}
+
+/* line 34, ../sass/app.scss */
+h1.noscript {
+  margin-top: 20px;
+  font-size: 26px;
+}
+
+/* line 38, ../sass/app.scss */
+p.noscript {
+  font-size: 18px;
+}
+
+/* line 45, ../sass/app.scss */
 header {
   height: 60px;
   background: #f1cf30;
 }
 
-/* line 37, ../sass/app.scss */
+/* line 51, ../sass/app.scss */
 .tm-header-container {
   display: flex;
   justify-content: space-between;
@@ -160,25 +177,25 @@ header {
   height: 100%;
 }
 
-/* line 46, ../sass/app.scss */
+/* line 60, ../sass/app.scss */
 .tm-brand-logo {
   height: 39px;
 }
 
-/* line 50, ../sass/app.scss */
+/* line 64, ../sass/app.scss */
 .tm-sign-out {
-  color: white;
+  color: #333;
   text-decoration: none;
 }
 
-/* line 55, ../sass/app.scss */
+/* line 69, ../sass/app.scss */
 .tm-wrapper {
   display: flex;
   height: 100vh;
   flex-direction: column;
 }
 
-/* line 63, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 .tm-main {
   display: flex;
   flex: 1;
@@ -186,13 +203,13 @@ header {
   align-items: stretch;
 }
 
-/* line 70, ../sass/app.scss */
+/* line 84, ../sass/app.scss */
 h1 {
   font-size: 16px;
   margin-bottom: 20px;
 }
 
-/* line 75, ../sass/app.scss */
+/* line 89, ../sass/app.scss */
 p {
   margin-bottom: 20px;
   color: #9b9b9b;
@@ -200,7 +217,7 @@ p {
   line-height: 1.4;
 }
 
-/* line 85, ../sass/app.scss */
+/* line 99, ../sass/app.scss */
 .tm-playlist-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -208,13 +225,13 @@ p {
   color: white;
   background: #333;
 }
-/* line 94, ../sass/app.scss */
+/* line 108, ../sass/app.scss */
 .tm-playlist-list h1 {
   margin: 20px 25px;
   font-size: 16px;
 }
 
-/* line 100, ../sass/app.scss */
+/* line 114, ../sass/app.scss */
 .tm-user {
   display: flex;
   flex-direction: column;
@@ -222,18 +239,18 @@ p {
   align-items: center;
   height: 150px;
 }
-/* line 108, ../sass/app.scss */
+/* line 122, ../sass/app.scss */
 .tm-user img {
   height: 55px;
   width: 55px;
   border-radius: 28px;
 }
-/* line 115, ../sass/app.scss */
+/* line 129, ../sass/app.scss */
 .tm-user .tm-user-name {
   margin-top: 20px;
 }
 
-/* line 120, ../sass/app.scss */
+/* line 134, ../sass/app.scss */
 .tm-playlist-item {
   padding: 10px;
   padding-left: 20px;
@@ -243,13 +260,13 @@ p {
   cursor: pointer;
   font-size: 14px;
 }
-/* line 130, ../sass/app.scss */
+/* line 144, ../sass/app.scss */
 .tm-playlist-item.active, .tm-playlist-item:hover {
   color: white;
   border-right: 5px solid #f1cf30;
 }
 
-/* line 139, ../sass/app.scss */
+/* line 153, ../sass/app.scss */
 .tm-snapshot-list {
   overflow-y: scroll;
   box-sizing: border-box;
@@ -258,7 +275,7 @@ p {
   background-color: #f0f0f0;
 }
 
-/* line 150, ../sass/app.scss */
+/* line 164, ../sass/app.scss */
 .tm-button {
   display: block;
   float: right;
@@ -268,13 +285,13 @@ p {
   background-color: #f1cf30;
   border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  color: white;
+  color: #333;
   font-size: 13px;
   text-align: center;
   text-decoration: none;
 }
 
-/* line 167, ../sass/app.scss */
+/* line 181, ../sass/app.scss */
 .tm-snapshot-item {
   position: relative;
   margin-left: 20px;
@@ -286,11 +303,11 @@ p {
   border-bottom-left-radius: 5px;
   cursor: pointer;
 }
-/* line 180, ../sass/app.scss */
+/* line 194, ../sass/app.scss */
 .tm-snapshot-item.active, .tm-snapshot-item:hover {
   border-right: 5px solid #f1cf30;
 }
-/* line 186, ../sass/app.scss */
+/* line 200, ../sass/app.scss */
 .tm-snapshot-item:before {
   content: ' ';
   width: 18px;
@@ -302,7 +319,7 @@ p {
   display: inline-block;
   box-sizing: border-box;
 }
-/* line 197, ../sass/app.scss */
+/* line 211, ../sass/app.scss */
 .tm-snapshot-item:not(:last-child):after {
   content: '• • • • •';
   width: 7px;
@@ -316,20 +333,20 @@ p {
   line-height: 0.88;
 }
 
-/* line 211, ../sass/app.scss */
+/* line 225, ../sass/app.scss */
 .tm-snapshot-item-title {
   margin-bottom: 10px;
   font-size: 14px;
 }
 
-/* line 217, ../sass/app.scss */
+/* line 231, ../sass/app.scss */
 .tm-snapshot-item-info {
   line-height: 1.5;
   color: #9b9b9b;
   font-size: 12px;
 }
 
-/* line 226, ../sass/app.scss */
+/* line 240, ../sass/app.scss */
 .tm-playlist {
   overflow-y: scroll;
   padding: 35px;
@@ -338,17 +355,17 @@ p {
   background-color: white;
 }
 
-/* line 236, ../sass/app.scss */
+/* line 250, ../sass/app.scss */
 .tm-songs-table {
   margin: 30px -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 }
-/* line 241, ../sass/app.scss */
+/* line 255, ../sass/app.scss */
 .tm-songs-table th {
   font-size: 16px;
 }
-/* line 244, ../sass/app.scss */
+/* line 258, ../sass/app.scss */
 .tm-songs-table td {
   max-width: 200px;
   padding: 13px 0;

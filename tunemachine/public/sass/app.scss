@@ -26,6 +26,20 @@ html, body {
   background-color: $tm-yellow;
 }
 
+.noscript {
+  text-align: center;
+  color: $tm-grey-dark;
+}
+
+h1.noscript {
+  margin-top: 20px;
+  font-size: 26px;
+}
+p.noscript {
+  font-size: 18px;
+}
+
+
 // --- TMHeader ---
 
 header {
@@ -48,7 +62,7 @@ header {
 }
 
 .tm-sign-out {
-  color: white;
+  color: $tm-grey-dark;
   text-decoration: none;
 }
 
@@ -158,7 +172,7 @@ p {
   background-color: $tm-yellow;
   border-bottom: 2px solid $tm-button-underline;
   border-radius: 5px;
-  color: white;
+  color: $tm-grey-dark;
   font-size: $tm-text-large;
   text-align: center;
   text-decoration: none;
