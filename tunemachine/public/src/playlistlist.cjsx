@@ -61,7 +61,35 @@ PlaylistList = React.createClass
           type: 'tm:playlist'
           playlist: data.playlists[selected]
 
-    # TODO: listen to add-snapshot event
+    $('body').on 'tm:add-snapshot', (e) =>
+      # This whold function is kind of a hack because there are two sources of
+      # truth for lists of snapshots. Ideally, they'd be either all entirely
+      # managed in one place instead of both by PlaylistList and SnapshotList
+
+      # Push the new snapshot onto the current playlist
+
+      playlist = this.state.playlists[this.state.selected]
+
+      if playlist
+        operation =
+          $push: [e.snapshot]
+      else
+        operation =
+          $set: [e.snapshot]
+
+      newPlaylist = React.addons.update playlist,
+        snapshots: operation
+
+      # Set the new playlist as the real playlist
+
+      update = {}
+      update[this.state.selected] =
+        $set: newPlaylist
+
+      newState = React.addons.update this.state,
+        playlists: update
+
+      this.setState newState
 
   render: ->
     playlistItems = _.map this.state.playlists, (playlist, idx) =>
