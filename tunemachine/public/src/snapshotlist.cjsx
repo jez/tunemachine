@@ -1,6 +1,7 @@
 $ = require 'jquery'
 _ = require 'underscore'
 Modal = require './modal.cjsx'
+moment = require 'moment'
 React = require 'react/addons'
 
 addSnapshot = (playlist_id, newName) ->
@@ -46,7 +47,10 @@ SnapshotItem = React.createClass
 
     <div className={className} onClick={this.props.onClick}>
       <div className="tm-snapshot-item-title">{this.props.name}</div>
-      <div className="tm-snapshot-item-info">from {this.props.timestamp}</div>
+      <div className="tm-snapshot-item-info"
+          title={moment(this.props.timestamp).format('MMMM Do YYYY, h:mm:ss a')}>
+        from {moment(this.props.timestamp).fromNow()}
+      </div>
       <div className="tm-snapshot-item-info">{this.props.count} songs</div>
     </div>
 
@@ -54,13 +58,8 @@ SnapshotList = React.createClass
   getInitialState: ->
     playlist:
       key: -1
-      name: 'Party music'
-    snapshots: [
-        key: 1
-        name: 'Too many parties'
-        timestamp: '06/20/2015'
-        count: 50
-    ]
+      name: 'Loading snapshots'
+    snapshots: []
     selected: 0
 
   handleClick: (idx) ->
