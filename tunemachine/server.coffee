@@ -8,7 +8,7 @@ console.log 'Initializing TuneMachine server instance.'
 app = {}
 app.config = require './config'
 app.web = require './express'
-app.routes = require './routes/routes'
+app.routes = require './routes'
 app.models = require './models'
 app.spotify = require './spotify'
 

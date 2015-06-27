@@ -1,4 +1,4 @@
-# @file routes.coffee
+# @file index.coffee
 # @brief Initializes the routes of the app.
 # @author Justin Gallagher, justingallag@gmail.com
 # @since 20 Jun 2015
