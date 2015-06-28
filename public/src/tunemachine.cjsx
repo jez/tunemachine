@@ -9,7 +9,7 @@ TuneMachine = React.createClass
     <div className="tm-wrapper">
       <header>
         <div className="tm-header-container">
-          <img className="tm-brand-logo" src="/img/logo.png" />
+          <img className="tm-brand-logo" src="/img/logo-black-text.png" />
           <a className="tm-sign-out" href="/auth/logout">Sign out</a>
         </div>
       </header>
