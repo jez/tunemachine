@@ -12,6 +12,7 @@ path = require 'path'
 morgan = require 'morgan'
 bodyParser = require 'body-parser'
 session = require 'express-session'
+favicon = require 'serve-favicon'
 MongoStore = require 'connect-mongo'
 MongoStore = MongoStore session
 
@@ -46,8 +47,7 @@ web.init = (config, next) ->
   # logging
   web.express.use morgan 'dev'
 
-  # uncomment after placing your favicon in /public
-  #web.express.use(favicon(__dirname + '/public/favicon.ico'))
+  web.express.use(favicon(__dirname + '/public/img/favicon.ico'))
   web.express.use bodyParser.json()
   web.express.use bodyParser.urlencoded
     extended: true

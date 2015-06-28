@@ -23,6 +23,7 @@
     "morgan": "^1.6.0",
     "react": "^0.13.3",
     "request": "^2.58.0",
+    "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
