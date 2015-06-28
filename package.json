@@ -18,9 +18,10 @@
     "Min Zhou <minzhou@andrew.cmu.edu>",
     "Jacob Zimmerman <jake@zimmerman.io>"
   ],
-  "main": "server.coffee",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon -e coffee",
+    "start": "bash start.sh",
+    "postinstall": "gulp",
     "build": "gulp",
     "watch": "gulp watch",
     "clean": "gulp clean",
@@ -32,6 +33,7 @@
     "body-parser": "^1.13.1",
     "browserify": "^10.2.4",
     "coffee-reactify": "^4.0.0",
+    "coffee-script": "^1.9.3",
     "connect-mongo": "^0.8.1",
     "del": "^1.2.0",
     "express": "^4.12.4",

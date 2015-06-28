@@ -1,4 +1,4 @@
-# @file server.coffee
+# @file app.coffee
 # @brief Glues together all of the logic from the rest of the system.
 # @author Oscar Bezi, oscar@bezi.io
 # @since 20 Jun 2015
