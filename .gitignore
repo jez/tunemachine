@@ -3,6 +3,7 @@ node_modules
 
 # Vim
 .*.sw[nop]
+tags
 
 # Compiled frontend JS and CSS
 /public/js/bundle.js
