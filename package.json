@@ -2,23 +2,32 @@
   "name": "tunemachine",
   "version": "0.9.0",
   "description": "A time machine for your Spotify tunes.",
-  "keywords": ["spotify", "time machine", "version control"],
+  "keywords": [
+    "spotify",
+    "time machine",
+    "version control"
+  ],
   "license": "MIT",
-  "main": "server.coffee",
-  "scripts": {
-    "watchify": "watchify -t coffee-reactify --debug ./public/src/app.cjsx -o public/js/bundle.js -v",
-    "browserify": "browserify -t coffee-reactify ./public/src/app.cjsx | uglifyjs > public/js/bundle.js",
-    "build": "npm run browserify ",
-    "dev": "npm run watchify & nodemon -e coffee"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jez/tunemachine"
   },
-  "author": "CMU A16Z 2015 Hackathon Team",
   "contributors": [
     "Oscar Bezi <oscar@bezi.io>",
     "Justin Gallagher <justingallag@gmail.com>",
     "Min Zhou <minzhou@andrew.cmu.edu>",
     "Jacob Zimmerman <jake@zimmerman.io>"
   ],
-  "license": "MIT",
+  "main": "server.coffee",
+  "scripts": {
+    "dev": "nodemon -e coffee",
+    "build": "gulp",
+    "watch": "gulp watch",
+    "clean": "gulp clean",
+    "styles": "gulp styles",
+    "scripts": "gulp scripts",
+    "watchify": "gulp watchify"
+  },
   "dependencies": {
     "body-parser": "^1.13.1",
     "connect-mongo": "^0.8.1",
@@ -36,9 +45,21 @@
   },
   "devDependencies": {
     "browserify": "^10.2.4",
-    "coffee-react": "^3.2.0",
-    "coffee-reactify": "^3.0.0",
-    "uglify-js": "^2.4.23",
+    "coffee-reactify": "^4.0.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-sass": "^2.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
+  },
+  "browserify": {
+    "transform": [
+      "coffee-reactify"
+    ]
   }
 }
