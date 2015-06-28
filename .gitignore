@@ -4,8 +4,9 @@ node_modules
 # Vim
 .*.sw[nop]
 
-# Compiled frontend JS
+# Compiled frontend JS and CSS
 /public/js/bundle.js
+/public/css
 
 .sass-cache
 
