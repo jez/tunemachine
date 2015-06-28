@@ -1,7 +1,9 @@
 {
   "name": "tunemachine",
-  "version": "1.0.0",
-  "description": "Version control for your spotify tunes.",
+  "version": "0.9.0",
+  "description": "A time machine for your Spotify tunes.",
+  "keywords": ["spotify", "time machine", "version control"],
+  "license": "MIT",
   "main": "server.coffee",
   "scripts": {
     "watchify": "watchify -t coffee-reactify --debug ./public/src/app.cjsx -o public/js/bundle.js -v",
@@ -10,6 +12,12 @@
     "dev": "npm run watchify & nodemon -e coffee"
   },
   "author": "CMU A16Z 2015 Hackathon Team",
+  "contributors": [
+    "Oscar Bezi <oscar@bezi.io>",
+    "Justin Gallagher <justingallag@gmail.com>",
+    "Min Zhou <minzhou@andrew.cmu.edu>",
+    "Jacob Zimmerman <jake@zimmerman.io>"
+  ],
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.1",
