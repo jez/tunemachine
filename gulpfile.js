@@ -18,18 +18,31 @@ gulp.task('clean', function(cb) {
   return del(['./public/css', './public/js'], cb);
 });
 
-gulp.task('styles', function() {
-  return gulp.src('./public/sass/**/*.scss')
-    .pipe(sourcemaps.init())
-      .pipe(sass({ outputStyle: 'compressed' })
-      .on('error', sass.logError))
-    // Fake that the sourcemapped files came from /sass
-    .pipe(sourcemaps.write({ sourceRoot: '/sass' }))
+function styles(devMode) {
+  var result = gulp.src('./public/sass/**/*.scss');
 
+  if (devMode) {
+    result = result.pipe(sourcemaps.init());
+  }
+
+  // Compile and compress sass
+  result = result
+    .pipe(sass({ outputStyle: 'compressed' })
+    .on('error', sass.logError));
+
+  if (devMode) {
+    // Fake that the sourcemapped files came from /sass
+    result = result.pipe(sourcemaps.write({ sourceRoot: '/sass' }));
+  }
+
+  return result
     // Add CSS3 prefixes after sourcemaps so we get meaningful source mappings
     .pipe(autoprefixer())
     .pipe(gulp.dest('./public/css'));
-});
+}
+
+gulp.task('styles',     function() { return styles(false); });
+gulp.task('styles-dev', function() { return styles(true); });
 
 function scripts(devMode) {
   var config = {};
@@ -88,8 +101,8 @@ function scripts(devMode) {
 gulp.task('scripts',  function() { return scripts(false); });
 gulp.task('watchify', function() { return scripts(true); });
 
-gulp.task('watch', ['watchify'], function() {
-  gulp.watch('./public/sass/**/*.scss', ['styles']);
+gulp.task('watch', ['watchify', 'styles-dev'], function() {
+  return gulp.watch('./public/sass/**/*.scss', ['styles-dev']);
 });
 
 gulp.task('default', function() {
