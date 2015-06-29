@@ -8,8 +8,8 @@
 config = {}
 
 # default values
-default_port = 8080
-default_domain = 'http://localhost:8080/'
+default_port = 5000
+default_domain = 'http://localhost:5000/'
 default_db_url = 'mongodb://localhost:27017'
 
 # routing
