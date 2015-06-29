@@ -31,10 +31,10 @@ There are two ways to get set up; you can get set up for
 
 ### Development
 
-The development environment requires a Node.js setup.
+The development environment requires a Node.js setup. First, clone this repo
+somewhere, then run:
 
 ```console
-$ git clone https://github.com/jez/tunemachine
 $ npm install
 
 # If you want a fancy development environment:
@@ -102,11 +102,7 @@ npm run clean
 
 ### The Real World
 
-This app can be deployed with Heroku.
-
-```console
-$ git clone https://github.com/jez/tunemachine
-```
+This app can be deployed with Heroku. First, clone this repo somewhere.
 
 Next, either install the [Heroku toolbelt][toolbelt], or make sure you have the
 [foreman][foreman] gem installed.
