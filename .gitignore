@@ -3,11 +3,17 @@ node_modules
 
 # Vim
 .*.sw[nop]
+tags
 
-# Compiled frontend JS
+# Compiled frontend JS and CSS
 /public/js/bundle.js
+/public/css
 
 .sass-cache
 
 # local mongodb data
 /data
+
+# Secrets
+.env
+.env.prod

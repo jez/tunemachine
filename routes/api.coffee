@@ -107,9 +107,6 @@ module.exports = (app, models, spotify) ->
         if err?
           return models.err res, err
 
-        console.log req.params.snapId
-        console.log snap
-
         if snap?
           songs = snap.Tracks.map (s) -> s.id
           spotify.setSnapshot req.session.access_token, req.session.user_id, req.params.playlistId, songs, (err) ->
