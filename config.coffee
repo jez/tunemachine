@@ -28,4 +28,16 @@ config.auth = {}
 config.auth.clientId = process.env.SPOTIFY_CLIENT_ID
 config.auth.secret = process.env.SPOTIFY_CLIENT_SECRET
 
+# verify config a bit
+unless config.auth.clientId?
+  console.warn "Looks like you don't have a Spotify client ID."
+  console.warn 'Check the README for how to get one.'
+unless config.auth.secret?
+  console.warn "Looks like you don't have a Spotify client secret."
+  console.warn 'Check the README for how to get one.'
+if process.env.NODE_ENV == 'production' and not process.env.DB_URL
+  console.warn "You're in production but you're using the default localhost DB."
+  console.warn "You might want to make sure you've configured this correctly."
+  console.warn 'Check the README if you need to.'
+
 module.exports = config
