@@ -13,3 +13,7 @@ tags
 
 # local mongodb data
 /data
+
+# Secrets
+.env
+.env.prod
