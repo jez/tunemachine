@@ -17,6 +17,12 @@ for keeping track of what's changed over time inside collaborative playlists.
 
 ![main TuneMachine app page](/assets/demo.png)
 
+The app itself is written entirely in CoffeeScript on the backend and CJSX
+(CoffeeScript + JSX syntax for React) on the frontend. It uses Sass for CSS
+templating. It's been really fun to build, mostly because of how nice
+CoffeeScript and React are to use. Take a peek under the hood and see for
+yourself!
+
 
 ## Setup
 
@@ -154,6 +160,21 @@ We should now be good to go. Push the code to Heroku to deploy:
 ```console
 $ git push heroku master
 ```
+
+
+## TODO
+
+These are some things that might be fun to implement at some time in the future
+but in all likelihood might never be.
+
+- [ ] Make it work on mobile
+- [ ] Render errors to the user using popup "toasts"
+- [ ] Add permalinks and client-side routing using React Router
+- [ ] Use server-side React for rendering the app initially on the backend
+- [ ] Use Flux to control the flow of data throughout the app
+- [ ] Add support for "forking" and "merging" changes from playlists you don't
+      have write access to.
+
 
 ## License
 
