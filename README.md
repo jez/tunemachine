@@ -1,9 +1,10 @@
 # TuneMachine
 
-> A time machine for your Spotify tunes!
+> :notes: A time machine for your Spotify tunes!
 
-This project is the result of the [ScottyLabs][sl]' team at a16z's Battle of the
-Hacks v2 in June 2015.
+This project was made by the [ScottyLabs][sl]' team, consisting of Oscar Bezi,
+Justin Gallagher, Min Zhou, and Jake Zimmerman at a16z's Battle of the Hacks v2
+in June 2015.
 
 See it live at <http://tunemachine.herokuapp.com>.
 
@@ -13,6 +14,8 @@ you see all of your playlists. From here, you can see a list of snapshots you've
 taken of each playlist, and for each snapshot you can see a quick overview of
 what the playlist looked like at that point in time. This makes it super useful
 for keeping track of what's changed over time inside collaborative playlists.
+
+![main TuneMachine app page](/assets/demo.png)
 
 
 ## Setup
