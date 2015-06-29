@@ -10,9 +10,7 @@ config = {}
 # default values
 default_port = 8080
 default_domain = 'http://localhost:8080/'
-default_clientId = '80336a1812ac49b4a2e09be91d45bfeb'
-default_oauthSecret = '2d91683130494b3ba4f6d420b87fe851'
-default_db_url = 'mongodb://dev:devpassword@ds047682.mongolab.com:47682/tunemachine-dev'
+default_db_url = 'mongodb://localhost:27017'
 
 # routing
 config.port = process.env.PORT
@@ -28,8 +26,6 @@ config.db.url ?= default_db_url
 # auth magic
 config.auth = {}
 config.auth.clientId = process.env.CLIENT_ID
-config.auth.clientId ?= default_clientId
-config.auth.secret = process.env.AUTH_SECRET
-config.auth.secret ?= default_oauthSecret
+config.auth.secret = process.env.CLIENT_SECRET
 
 module.exports = config
