@@ -25,7 +25,7 @@ config.db.url ?= default_db_url
 
 # auth magic
 config.auth = {}
-config.auth.clientId = process.env.CLIENT_ID
-config.auth.secret = process.env.CLIENT_SECRET
+config.auth.clientId = process.env.SPOTIFY_CLIENT_ID
+config.auth.secret = process.env.SPOTIFY_CLIENT_SECRET
 
 module.exports = config
