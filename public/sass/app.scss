@@ -52,9 +52,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: $tm-playlist-list-width + $tm-snapshot-list-width + $tm-playlist-width - 30px;
+  max-width: $tm-playlist-list-width + $tm-snapshot-list-width + $tm-playlist-width;
   margin: 0 auto;
   height: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .tm-brand-logo {
@@ -83,22 +85,14 @@ header {
 
 h1 {
   font-size: $tm-title-large;
-  margin-bottom: 20px;
-}
-
-p {
-  margin-bottom: 20px;
-
-  color: $tm-grey-light;
-  font-size: $tm-text-normal;
-  line-height: 1.4;
+  min-height: 36px;
 }
 
 // --- PlaylistList ---
 
 .tm-playlist-list {
-  overflow-y: scroll;
-
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   width: $tm-playlist-list-width;
 
@@ -106,8 +100,7 @@ p {
   background: $tm-grey-dark;
 
   h1 {
-    margin: 20px 25px;
-    font-size: $tm-title-large;
+    padding: 0 20px;
   }
 }
 
@@ -117,7 +110,7 @@ p {
   justify-content: center;
   align-items: center;
 
-  height: 150px;
+  min-height: 150px;
 
   img {
     height: 55px;
@@ -129,6 +122,13 @@ p {
   .tm-user-name {
     margin-top: 20px;
   }
+}
+
+.tm-playlist-list-wrapper,
+.tm-snapshot-items-wrapper,
+.tm-songs-table-wrapper {
+  overflow-y: scroll;
+  flex: 1;
 }
 
 .tm-playlist-item {
@@ -151,14 +151,23 @@ p {
 // --- SnapshotList ---
 
 .tm-snapshot-list {
-  overflow-y: scroll;
-
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   width: $tm-snapshot-list-width;
 
   padding: 35px;
 
   background-color: $tm-background;
+}
+
+.tm-snapshot-controls,
+.tm-playlist-controls {
+  min-height: 68px;
+
+  color: $tm-grey-light;
+  font-size: $tm-text-normal;
+  line-height: 1.4;
 }
 
 .tm-button {
@@ -176,6 +185,11 @@ p {
   font-size: $tm-text-large;
   text-align: center;
   text-decoration: none;
+}
+
+.tm-snapshot-items-wrapper {
+  margin: 0 -35px;
+  padding: 0 35px;
 }
 
 .tm-snapshot-item {
@@ -238,7 +252,8 @@ p {
 // --- Playlist ---
 
 .tm-playlist {
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
   padding: 35px;
 
   box-sizing: border-box;
@@ -248,7 +263,7 @@ p {
 }
 
 .tm-songs-table {
-  margin: 30px -5px;
+  margin: 0 -5px;
   border-collapse: separate;
   border-spacing: 5px 0;
 
@@ -262,7 +277,10 @@ p {
     overflow: hidden;
     white-space: nowrap;
 
-    color: $tm-grey-light;
-    font-size: $tm-text-large;
+    &, a {
+      color: $tm-grey-light;
+      font-size: $tm-text-large;
+      text-decoration: none;
+    }
   }
 }

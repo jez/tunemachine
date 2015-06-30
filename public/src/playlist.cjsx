@@ -92,20 +92,24 @@ Playlist = React.createClass
 
     <div className="tm-playlist">
       <h1>{this.state.name}</h1>
-      <PlaylistRestoreButton {...this.state} key_={this.state.key}/>
-      <p>
-        Restore your playlist back in time. Restoring will create a new
-        snapshot for your convenience.
-      </p>
-      <table className="tm-songs-table">
-        <thead>
-          <th>Song</th>
-          <th>Artists</th>
-        </thead>
-        <tbody>
-          {tracks}
-        </tbody>
-      </table>
+      <div className="tm-playlist-controls">
+        <PlaylistRestoreButton {...this.state} key_={this.state.key}/>
+        <p>
+          Restore your playlist back in time. Restoring will create a new
+          snapshot for your convenience.
+        </p>
+      </div>
+      <div className="tm-songs-table-wrapper">
+        <table className="tm-songs-table">
+          <thead>
+            <th>Song</th>
+            <th>Artists</th>
+          </thead>
+          <tbody>
+            {tracks}
+          </tbody>
+        </table>
+      </div>
     </div>
 
 module.exports = Playlist

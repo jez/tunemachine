@@ -99,7 +99,9 @@ PlaylistList = React.createClass
     <div className="tm-playlist-list">
       <User {...this.state.user} />
       <h1>Playlists</h1>
-      {playlistItems}
+      <div className="tm-playlist-list-wrapper">
+        {playlistItems}
+      </div>
     </div>
 
 module.exports = PlaylistList

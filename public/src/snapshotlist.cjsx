@@ -118,13 +118,17 @@ SnapshotList = React.createClass
 
     <div className="tm-snapshot-list">
       <h1>Snapshots</h1>
-      <SnapshotCopyButton playlist={this.state.playlist} />
-      <p>
-        Copy the newest version of your playlist and go back to this version
-        whenever you want to in the future.
-      </p>
+      <div className="tm-snapshot-controls">
+        <SnapshotCopyButton playlist={this.state.playlist} />
+        <p>
+          Copy the newest version of your playlist and go back to this version
+          whenever you want to in the future.
+        </p>
+      </div>
       <h1>History of {this.state.playlist.name}</h1>
-      {snapshotItems}
+      <div className="tm-snapshot-items-wrapper">
+        {snapshotItems}
+      </div>
     </div>
 
 module.exports = SnapshotList
