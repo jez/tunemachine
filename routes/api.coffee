@@ -57,6 +57,7 @@ module.exports = (app, models, spotify) ->
         if snap?
           tracks = snap.Tracks.map (track) ->
             key: track.id
+            url: "https://open.spotify.com/track/#{track.id}"
             artist: track.artist
             name: track.name
 

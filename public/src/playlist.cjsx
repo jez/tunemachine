@@ -39,8 +39,8 @@ PlaylistRestoreButton = React.createClass
 Track = React.createClass
   render: ->
     <tr>
-      <td>{this.props.name}</td>
-      <td>{this.props.artist}</td>
+      <td><a href={this.props.url}>{this.props.name}</a></td>
+      <td><a href={this.props.url}>{this.props.artist}</a></td>
     </tr>
 
 Playlist = React.createClass
