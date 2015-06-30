@@ -84,10 +84,10 @@ commands that might be useful:
 $ mongod --dbpath ./data
 
 # To run, watching for changes to backend coffee files:
-NODE_ENV=development npm start
+NODE_ENV=development foreman start
 
 # To run, not watching for changes on the backend
-npm start
+foreman start
 
 # To watch and recompile frontend static assets
 npm run watch
