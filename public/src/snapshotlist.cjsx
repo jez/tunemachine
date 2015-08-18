@@ -4,17 +4,17 @@ Modal = require './modal.cjsx'
 moment = require 'moment'
 React = require 'react/addons'
 
-addSnapshot = (playlist_id, newName) ->
+addSnapshot = (playlist, newName) ->
   $.ajax
     type: 'POST'
-    url: "/api/playlist/#{playlist_id}"
+    url: "/api/owner/#{playlist.owner}/playlist/#{playlist.key}"
     data:
       name: "#{newName}"
     json: true
     success: (snapshot) ->
       $('body').trigger
         type: 'tm:snapshot'
-        playlist_id: playlist_id
+        playlist: playlist
         snapshot: snapshot
 
       $('body').trigger
@@ -28,7 +28,7 @@ SnapshotCopyButton = React.createClass
     callback = (cancelled, name) =>
       React.unmountComponentAtNode $('#tm-modal-target')[0]
       if not cancelled
-        addSnapshot(this.props.playlist.key, name)
+        addSnapshot @props.playlist, name
 
     React.render <Modal initialValue="Snap of #{this.props.playlist.name}"
         callback={callback}/>, $('#tm-modal-target')[0]
@@ -68,7 +68,7 @@ SnapshotList = React.createClass
 
     $('body').trigger
       type: 'tm:snapshot'
-      playlist_id: this.state.playlist.key
+      playlist: this.state.playlist
       snapshot: this.state.snapshots[idx]
 
   componentDidMount: ->
@@ -81,16 +81,17 @@ SnapshotList = React.createClass
         playlist:
           key: e.playlist.key
           name: e.playlist.name
+          owner: e.playlist.owner
         snapshots: e.playlist.snapshots
         selected: selected
 
       if selected != null
         $('body').trigger
           type: 'tm:snapshot'
-          playlist_id: e.playlist.key
+          playlist: e.playlist
           snapshot: e.playlist.snapshots[selected]
       else
-        addSnapshot(e.playlist.key, "Initial snapshot")
+        addSnapshot e.playlist, 'Initial snapshot'
 
 
     $('body').on 'tm:add-snapshot', (e) =>
@@ -105,7 +106,7 @@ SnapshotList = React.createClass
 
       $('body').trigger
         type: 'tm:snapshot'
-        playlist_id: this.state.playlist.key
+        playlist: this.state.playlist
         snapshot: e.snapshot
 
 

@@ -35,6 +35,7 @@ module.exports = (app, models, spotify) ->
             playlists = playlists.playlists.map (p) ->
               key: p.id
               name: p.name
+              owner: p.owner
               snapshots: snapshots
                 .filter (s) -> s.Playlist == p.id
                 .map (s) ->
@@ -74,11 +75,12 @@ module.exports = (app, models, spotify) ->
   app.get '/api/playlist/:playlistId/:snapId', requireLoggedIn, get
 
   post = (req, res) ->
+    ownerId = req.params.ownerId or req.session.user_id
     unless req.body.name?
       res.status 400
       res.end 'Need name'
     else
-      spotify.getSnapshot req.session.access_token, req.session.user_id, req.params.playlistId, (err, snap) ->
+      spotify.getSnapshot req.session.access_token, ownerId, req.params.playlistId, (err, snap) ->
         if err?
           return models.err res, err
 
@@ -95,9 +97,11 @@ module.exports = (app, models, spotify) ->
 
   # POST /api/playlist/:playlistId
   app.post '/api/playlist/:playlistId', post
+  # POST /api/owner/:ownerId/playlist/:playlistId
+  app.post '/api/owner/:ownerId/playlist/:playlistId', post
 
-  # PUT /api/playlist/:playlistId/:snapId
-  app.put '/api/playlist/:playlistId/:snapId', (req, res) ->
+  put = (req, res) ->
+    ownerId = req.params.ownerId or req.session.user_id
     unless req.body.name?
       res.status 400
       res.end 'Need name'
@@ -110,7 +114,7 @@ module.exports = (app, models, spotify) ->
 
         if snap?
           songs = snap.Tracks.map (s) -> s.id
-          spotify.setSnapshot req.session.access_token, req.session.user_id, req.params.playlistId, songs, (err) ->
+          spotify.setSnapshot req.session.access_token, ownerId, req.params.playlistId, songs, (err) ->
             if err?
               return models.err res, err
 
@@ -120,3 +124,8 @@ module.exports = (app, models, spotify) ->
         else
           res.status 404
           res.end()
+
+  # PUT /api/playlist/:playlistId/:snapId
+  app.put '/api/playlist/:playlistId/:snapId', put
+  # PUT /api/owner/:ownerId/playlist/:playlistId/:snapId
+  app.put '/api/owner/:ownerId/playlist/:playlistId/:snapId', put

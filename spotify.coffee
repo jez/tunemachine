@@ -48,6 +48,7 @@ spotify.getPlaylists = (oAuthToken, userId, next) ->
             result = {}
             result.id = p.id
             result.name = p.name
+            result.owner = p.owner.id
             return result
 
         values.playlists = values.playlists.concat items

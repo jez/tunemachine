@@ -12,14 +12,14 @@ PlaylistRestoreButton = React.createClass
       if not cancelled
         $.ajax
           type: 'PUT'
-          url: "/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
+          url: "/api/owner/#{@props.playlist.owner}/playlist/#{@props.playlist.key}/#{@props.key_}"
           data:
             name: name
           json: true
           success: (snapshot) =>
             $('body').trigger
               type: 'tm:snapshot'
-              playlist_id: this.props.playlist_id
+              playlist: this.props.playlist
               snapshot: snapshot
 
             $('body').trigger
@@ -31,7 +31,7 @@ PlaylistRestoreButton = React.createClass
 
 
   render: ->
-    <a href="/api/playlist/#{this.props.playlist_id}/#{this.props.key_}"
+    <a href="/api/playlist/#{this.props.playlist.key}/#{this.props.key_}"
         className="tm-button" onClick={this.handleClick}>
       Restore
     </a>
@@ -46,45 +46,20 @@ Track = React.createClass
 Playlist = React.createClass
   getInitialState: ->
     key: -1
-    name: 'Too many parties'
-    timestamp: '06/20/2015'
-    count: 50
-    tracks: [
-        key: 0
-        name: 'West Coast'
-        artist: 'Lana Del Rey'
-      ,
-        key: 1
-        name: 'Shut Up and Dance'
-        artist: 'Walk the moon'
-      ,
-        key: 2
-        name: 'Fight Song'
-        artist: 'Rachel Platten'
-      ,
-        key: 3
-        name: 'Reckless Serenade'
-        artist: 'Artic Monkeys'
-      ,
-        key: 4
-        name: "Why'd you only call me when you're high"
-        artist: 'Artic Monkeys'
-      ,
-        key: 5
-        name: 'Fluorescent Adolescent'
-        artist: 'Artic Monkeys'
-      ,
-        key: 6
-        name: 'Cruel World'
-        artist: 'Lana Del Rey'
-    ]
+    playlist:
+      key: ''
+      name: ''
+      owner: ''
+    timestamp: ''
+    count: 0
+    tracks: []
 
   componentDidMount: ->
     $('body').on 'tm:snapshot', (e) =>
-      $.get "/api/playlist/#{e.playlist_id}/#{e.snapshot.key}", (snapshot) =>
+      $.get "/api/playlist/#{e.playlist.key}/#{e.snapshot.key}", (snapshot) =>
         this.setState snapshot
         this.setState
-          playlist_id: e.playlist_id
+          playlist: e.playlist
 
   render: ->
     tracks = _.map this.state.tracks, (track) ->
